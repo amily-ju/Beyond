@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond · Beyond the Stars</title>
+    <meta name="description" content="Beyond — a student-led charity project supporting children with autism. Beyond the Stars.">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./Beyond · Beyond the Stars_files/css2" rel="stylesheet">
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            --pink: #FF1493;
+            --pink-light: #FF69B4;
+            --pink-soft: #FFF0F7;
+            --blue: #1E90FF;
+            --blue-light: #00BFFF;
+            --blue-soft: #EBF6FF;
+            --rainbow-red: #FF4B6E;
+            --rainbow-orange: #FF9F43;
+            --rainbow-yellow: #FECA57;
+            --rainbow-green: #2ED573;
+            --rainbow-blue: #1E90FF;
+            --rainbow-indigo: #5352ED;
+            --rainbow-violet: #A55EEA;
+            --text-dark: #2D3436;
+            --text-gray: #636E72;
+            --text-light: #B2BEC3;
+            --bg-white: #FFFFFF;
+            --bg-soft: #F8F9FF;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        /* ========== Reset ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ========== Typography ========== */
+        h1, h2, h3, h4 { font-family: 'Comfortaa', 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+        .cn { font-family: 'Noto Sans SC', sans-serif; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 10px;
+        }
+        .section-title-cn {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-gray);
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        /* ========== Layout ========== */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 100px 0; position: relative; }
+
+        /* ========== Navbar ========== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled { padding: 12px 0; box-shadow: var(--shadow-sm); }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--pink); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--pink), var(--blue));
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--pink), var(--blue-light));
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .nav-cta::after { display: none; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,20,147,0.3); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--text-dark); }
+
+        /* ========== Hero ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 24px 80px;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #FFF0F7 0%, #EBF6FF 40%, #F8F9FF 100%);
+            z-index: -2;
+        }
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            z-index: -1;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+        .hero-blob:nth-child(1) { width: 400px; height: 400px; background: var(--pink-light); top: 10%; left: -5%; }
+        .hero-blob:nth-child(2) { width: 350px; height: 350px; background: var(--blue-light); bottom: 5%; right: -5%; animation-delay: -4s; }
+        .hero-blob:nth-child(3) { width: 250px; height: 250px; background: var(--rainbow-violet); top: 50%; left: 60%; animation-delay: -8s; }
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(30px,-30px) scale(1.1); }
+            66% { transform: translate(-20px,20px) scale(0.95); }
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-stars {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 12px;
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .hero-title {
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 20%, #FF9F43 40%, #FECA57 55%, #2ED573 70%, #1E90FF 85%, #A55EEA 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease infinite;
+            letter-spacing: -2px;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-gray);
+            margin-top: 12px;
+            font-weight: 400;
+            letter-spacing: 4px;
+        }
+        .hero-tagline {
+            margin-top: 30px;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+        .hero-tagline-cn {
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+        .hero-cta-group {
+            margin-top: 40px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--pink), var(--blue-light));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255,20,147,0.25);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,20,147,0.35); }
+        .btn-secondary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: white;
+            color: var(--pink);
+            border: 2px solid var(--pink-light);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--pink-soft); transform: translateY(-3px); }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--text-light);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ========== Section: Divider Wave ========== */
+        .wave-divider { display: block; width: 100%; height: 60px; }
+
+        /* ========== Team Section ========== */
+        #team { background: var(--bg-white); }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .team-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 36px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+        }
+        .team-card:nth-child(1)::before { background: linear-gradient(90deg, #FF4B6E, #FF6B8A); }
+        .team-card:nth-child(2)::before { background: linear-gradient(90deg, #FF9F43, #FFB86F); }
+        .team-card:nth-child(3)::before { background: linear-gradient(90deg, #FECA57, #FFD970); }
+        .team-card:nth-child(4)::before { background: linear-gradient(90deg, #2ED573, #5BE58A); }
+        .team-card:nth-child(5)::before { background: linear-gradient(90deg, #1E90FF, #5352ED); }
+        .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+        .team-card:nth-child(1):hover { border-color: #FF4B6E; }
+        .team-card:nth-child(2):hover { border-color: #FF9F43; }
+        .team-card:nth-child(3):hover { border-color: #FECA57; }
+        .team-card:nth-child(4):hover { border-color: #2ED573; }
+        .team-card:nth-child(5):hover { border-color: #1E90FF; }
+        .team-avatar {
+            width: 80px; height: 80px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        .team-card:nth-child(1) .team-avatar { background: linear-gradient(135deg, #FF4B6E, #FF6B8A); }
+        .team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, #FF9F43, #FFB86F); }
+        .team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, #FECA57, #FFD970); }
+        .team-card:nth-child(4) .team-avatar { background: linear-gradient(135deg, #2ED573, #5BE58A); }
+        .team-card:nth-child(5) .team-avatar { background: linear-gradient(135deg, #1E90FF, #5352ED); }
+        .team-name { font-size: 1.15rem; font-weight: 600; }
+        .team-name-cn { font-size: 0.95rem; color: var(--text-gray); margin-top: 4px; }
+
+        /* ========== Philosophy Section ========== */
+        #philosophy {
+            background: linear-gradient(135deg, var(--pink-soft) 0%, var(--blue-soft) 100%);
+            text-align: center;
+        }
+        .quote-block {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .quote-mark {
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 0.5;
+            margin-bottom: 20px;
+        }
+        .quote-text {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+        .quote-text-cn {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-gray);
+            margin-top: 16px;
+            font-weight: 400;
+        }
+        .quote-stars { margin-top: 24px; font-size: 1.5rem; letter-spacing: 8px; }
+
+        /* ========== History Section ========== */
+        #history { background: var(--bg-white); }
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 36px 20px;
+            border-radius: var(--radius);
+            background: var(--bg-soft);
+            transition: transform 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-number {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label { font-size: 0.95rem; color: var(--text-gray); margin-top: 8px; font-weight: 500; }
+        .stat-label-cn { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+        .history-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .history-text p { font-size: 1.05rem; color: var(--text-gray); margin-bottom: 12px; line-height: 1.8; }
+        .history-text .cn-text { font-size: 0.95rem; color: var(--text-light); }
+
+        /* ========== Autism Section ========== */
+        #autism {
+            background: linear-gradient(180deg, var(--blue-soft) 0%, var(--bg-white) 100%);
+        }
+        .autism-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .autism-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 350px;
+        }
+        .puzzle-piece {
+            aspect-ratio: 1;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s;
+        }
+        .puzzle-piece:hover { transform: scale(1.05) rotate(-3deg); }
+        .puzzle-piece:nth-child(1) { background: linear-gradient(135deg, #FF1493, #FF69B4); }
+        .puzzle-piece:nth-child(2) { background: linear-gradient(135deg, #FF9F43, #FECA57); }
+        .puzzle-piece:nth-child(3) { background: linear-gradient(135deg, #2ED573, #1DD1A1); }
+        .puzzle-piece:nth-child(4) { background: linear-gradient(135deg, #1E90FF, #5352ED); }
+        .autism-content h3 { font-size: 1.6rem; margin-bottom: 8px; }
+        .autism-content h3 + .cn { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 20px; }
+        .autism-content p { color: var(--text-gray); margin-bottom: 12px; line-height: 1.8; }
+        .autism-content .cn-text { font-size: 0.92rem; color: var(--text-light); margin-bottom: 20px; }
+        .autism-highlight {
+            background: linear-gradient(135deg, var(--pink-soft), var(--blue-soft));
+            border-left: 4px solid var(--pink);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin-top: 20px;
+        }
+        .autism-highlight p { margin-bottom: 6px; color: var(--text-dark); font-weight: 500; }
+        .autism-highlight .cn-text { color: var(--text-gray); }
+
+        /* ========== Activities Section ========== */
+        #activities {
+            background: var(--bg-soft);
+        }
+        .activity-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        .activity-intro p { color: var(--text-gray); }
+        .activity-intro .cn-text { font-size: 0.92rem; color: var(--text-light); margin-top: 8px; }
+        .activity-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            position: relative;
+        }
+        .step-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+        .step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .step-number {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+        .step-card:nth-child(1) .step-number { background: linear-gradient(135deg, #FF4B6E, #FF6B8A); }
+        .step-card:nth-child(2) .step-number { background: linear-gradient(135deg, #FF9F43, #FECA57); }
+        .step-card:nth-child(3) .step-number { background: linear-gradient(135deg, #2ED573, #1DD1A1); }
+        .step-card:nth-child(4) .step-number { background: linear-gradient(135deg, #1E90FF, #5352ED); }
+        .step-card h4 { font-size: 1.1rem; margin-bottom: 4px; }
+        .step-card .cn { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 12px; }
+        .step-card p { font-size: 0.88rem; color: var(--text-gray); line-height: 1.7; }
+        .step-card .cn-text { font-size: 0.82rem; color: var(--text-light); margin-top: 6px; }
+
+        /* ========== Join Section ========== */
+        #join {
+            background: linear-gradient(135deg, #FF1493 0%, #1E90FF 100%);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        #join::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+        .join-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .join-content h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 10px; }
+        .join-content .join-subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 8px; }
+        .join-content .cn { font-size: 1rem; opacity: 0.8; margin-bottom: 30px; }
+        .huddle-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 28px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .join-text { font-size: 1.05rem; opacity: 0.92; line-height: 1.8; max-width: 650px; margin: 0 auto 12px; }
+        .join-text-cn { font-size: 0.92rem; opacity: 0.75; line-height: 1.8; max-width: 650px; margin: 0 auto 30px; }
+        .join-achievement {
+            display: inline-block;
+            padding: 16px 30px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            margin: 10px 0 35px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .join-achievement p { font-size: 0.95rem; opacity: 0.95; }
+        .join-achievement .cn { font-size: 0.85rem; opacity: 0.7; margin-top: 4px; }
+        .join-cta {
+            display: inline-block;
+            padding: 18px 48px;
+            background: white;
+            color: var(--pink);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .join-cta:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(0,0,0,0.3); }
+        .join-cta-note { font-size: 0.85rem; opacity: 0.7; margin-top: 14px; }
+        .join-cta-note .cn { font-size: 0.8rem; }
+
+        /* ========== Footer ========== */
+        .footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 50px 24px 30px;
+        }
+        .footer-logo {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .footer-tagline { font-size: 0.85rem; margin-bottom: 20px; }
+        .footer-stars { font-size: 1.2rem; letter-spacing: 8px; margin-bottom: 20px; }
+        .footer-copy { font-size: 0.8rem; opacity: 0.5; }
+
+        /* ========== Animations ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: white;
+                padding: 20px;
+                gap: 16px;
+                box-shadow: var(--shadow-md);
+            }
+            .autism-grid { grid-template-columns: 1fr; gap: 40px; }
+            .autism-visual { order: -1; }
+            section { padding: 70px 0; }
+            .hero { min-height: 90vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#hero" class="nav-logo">Beyond</a>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#team">Team</a>
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#philosophy">Philosophy</a>
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#history">History</a>
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#autism">Autism</a>
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#activities">Activities</a>
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#join" class="nav-cta">Join Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-content">
+            <div class="hero-stars">✨⭐✨</div>
+            <h1 class="hero-title">Beyond</h1>
+            <p class="hero-subtitle">Beyond the Stars</p>
+            <p class="hero-tagline">A student-led charity project supporting children with autism — one scarf, one story, one star at a time.</p>
+            <p class="hero-tagline cn hero-tagline-cn">一个由学生发起的公益项目，关爱来自星星的孩子们 —— 每一条围巾，每一个故事，每一颗星。</p>
+            <div class="hero-cta-group">
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#join" class="btn-primary">Join Beyond</a>
+                <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#team" class="btn-secondary">Meet the Team</a>
+            </div>
+        </div>
+        <a href="file:///Users/annadaiqing/WorkBuddy/2026-08-18-13-08-01/index.html#team" class="scroll-indicator">▾</a>
+    </section>
+
+    <!-- ===== Team ===== -->
+    <section id="team">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label" style="background:var(--pink-soft); color:var(--pink);">Our Team</span>
+                <h2 class="section-title">The Founding Members</h2>
+                <p class="section-title-cn cn">初始团队</p>
+            </div>
+            <div class="team-grid reveal">
+                <div class="team-card">
+                    <div class="team-avatar">A</div>
+                    <p class="team-name">Anna</p>
+                    <p class="team-name-cn cn">戴琬清</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">E</div>
+                    <p class="team-name">Eliza</p>
+                    <p class="team-name-cn cn">宋咿含</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">M</div>
+                    <p class="team-name">Momo</p>
+                    <p class="team-name-cn cn">王雨墨</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">M</div>
+                    <p class="team-name">Martina</p>
+                    <p class="team-name-cn cn">杨丹译</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">A</div>
+                    <p class="team-name">Amily</p>
+                    <p class="team-name-cn cn">鞠沁怡</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Philosophy ===== -->
+    <section id="philosophy">
+        <div class="container">
+            <div class="quote-block reveal">
+                <div class="quote-mark">“</div>
+                <p class="quote-text">We want to do something for these children from the stars.</p>
+                <p class="quote-text cn">我们想为这些"来自星星的孩子们"做些什么。</p>
+                <div class="quote-stars">✨⭐✨⭐✨</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== History ===== -->
+    <section id="history">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label" style="background:var(--blue-soft); color:var(--blue);">Our Journey</span>
+                <h2 class="section-title">Two Years of Giving</h2>
+                <p class="section-title-cn cn">两年的坚持与付出</p>
+            </div>
+            <div class="stats-row reveal">
+                <div class="stat-card">
+                    <p class="stat-number">¥6,000<span style="font-size:0.5em;">+</span></p>
+                    <p class="stat-label">Donated to children with autism</p>
+                    <p class="stat-label-cn cn">为自闭症孩子们捐献</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">2<span style="font-size:0.5em;"> yrs</span></p>
+                    <p class="stat-label">Since Beyond was founded</p>
+                    <p class="stat-label-cn cn">Beyond 成立至今</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">❤</p>
+                    <p class="stat-label">Every penny, handmade by us</p>
+                    <p class="stat-label-cn cn">每一分钱，亲手创造</p>
+                </div>
+            </div>
+            <div class="history-text reveal">
+                <p>Every single yuan we've donated was earned by our own hands. Each year at our school's Founders Day and the Elementary School Spring Fair, we knit scarves and craft handmade goods — selling them one by one, piece by piece.</p>
+                <p class="cn-text cn">我们捐出的每一分钱，都是自己亲手赚来的。每年在学校 Founder's Day 和小学 Spring Fair 上，我们织围巾、做手工，一件一件地卖出去。</p>
+                <p>It's slow. It's patient. It's love woven into every stitch.</p>
+                <p class="cn-text cn">虽然缓慢，虽然需要耐心——但每一针里都织进了爱。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Autism ===== -->
+    <section id="autism">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom: 50px;">
+                <span class="section-label" style="background:var(--pink-soft); color:var(--pink);">Understanding</span>
+                <h2 class="section-title">What is Autism?</h2>
+                <p class="section-title-cn cn">了解自闭症</p>
+            </div>
+            <div class="autism-grid">
+                <div class="autism-visual reveal">
+                    <div class="puzzle-container">
+                        <div class="puzzle-piece">✨</div>
+                        <div class="puzzle-piece">❤</div>
+                        <div class="puzzle-piece">🌟</div>
+                        <div class="puzzle-piece">🧡</div>
+                    </div>
+                </div>
+                <div class="autism-content reveal">
+                    <h3>More Than a Diagnosis</h3>
+                    <p class="cn">不止于一个诊断</p>
+                    <p>Autism, or Autism Spectrum Disorder (ASD), is a neurodevelopmental condition that affects how a person communicates, interacts, and experiences the world. Children with autism may see, hear, and feel things differently — and that difference is not a deficit, but a different way of being.</p>
+                    <p class="cn-text cn">自闭症（孤独症谱系障碍，ASD）是一种神经发育性疾病，影响着一个人的沟通方式、社交互动和对世界的感知。自闭症孩子可能以不同的方式去看、去听、去感受——这种不同不是缺陷，而是一种独特的存在方式。</p>
+                    <div class="autism-highlight">
+                        <p>Our purpose is not only to provide financial support for their daily lives and special needs —</p>
+                        <p>it is to be there, to sit beside them, and to accompany them.</p>
+                        <p class="cn-text cn">我们的目的不仅仅是用金钱支持他们的日常生活和特殊需求——更重要的是，我们需要陪伴他们。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Activities ===== -->
+    <section id="activities">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom: 20px;">
+                <span class="section-label" style="background:var(--blue-soft); color:var(--blue);">Our Activities</span>
+                <h2 class="section-title">Dialogue Club • 对白社</h2>
+                <p class="section-title-cn cn">每两周一次的温暖相聚</p>
+            </div>
+            <div class="activity-intro reveal">
+                <p>Every other Sunday, we join the Dialogue Club (对白社) — a creative drama workshop where we spend time with children with autism through storytelling and performance.</p>
+                <p class="cn-text cn">每隔一周的星期日，我们参加"对白社"活动——这是一个通过故事和表演与自闭症孩子们共度时光的创意戏剧工作坊。</p>
+            </div>
+            <div class="activity-steps reveal">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>A Theme Begins</h4>
+                    <p class="cn">一个主题的开始</p>
+                    <p>Each session starts with a new theme — a story, an emotion, or an adventure waiting to unfold.</p>
+                    <p class="cn-text cn">每次活动都有一个新主题——一个故事、一种情感，或一段等待展开的冒险。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Small Groups Form</h4>
+                    <p class="cn">分组合作</p>
+                    <p>Everyone splits into small groups, each with one or two children with autism, guided by volunteers.</p>
+                    <p class="cn-text cn">大家分成几个小组，每组有一到两位自闭症小朋友，由志愿者陪伴引导。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Rehearse &amp; Create</h4>
+                    <p class="cn">排练与创作</p>
+                    <p>Over one to two hours, each group writes and rehearses a short script together — turning ideas into a performance.</p>
+                    <p class="cn-text cn">花一到两个小时，每组一起编写并排练一个短剧本——把创意变成一场表演。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Shine &amp; Cheer</h4>
+                    <p class="cn">闪耀与欢呼</p>
+                    <p>Every group takes the stage to perform. We cheer, we clap, we celebrate each other — because every voice deserves to be heard.</p>
+                    <p class="cn-text cn">每个组轮流上台展示。我们为彼此欢呼、鼓掌、祝贺——因为每一个声音都值得被听见。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Join ===== -->
+    <section id="join">
+        <div class="container">
+            <div class="join-content reveal">
+                <div class="huddle-badge">
+                    <span>🧹</span>
+                    <span>HUDDLE TIME</span>
+                </div>
+                <h2>Join Beyond</h2>
+                <p class="join-subtitle">Become part of something bigger than yourself.</p>
+                <p class="cn">成为比自己更伟大的事物的一部分</p>
+                <p class="join-text">When you join Beyond, you'll spend our noon recess club time knitting scarves, making crafts, and learning about autism together. The atmosphere is relaxed, warm, and full of laughter — we call each gathering a Huddle, and the time we share, Huddle Time.</p>
+                <p class="join-text-cn cn">加入 Beyond 后，我们会在中午 recess 社团时间一起织围巾、做手工，同时了解自闭症。整个社团氛围轻松温暖、充满笑声——我们把每次聚在一起玩或做事的时光称为 Huddle / Huddle Time。</p>
+                <div class="join-achievement">
+                    <p>With our latest proceeds, we purchased performance microphones and stage supplies for the children and teachers of the Dialogue Club.</p>
+                    <p class="cn">我们用上一笔收入为对白社的小朋友和老师们购买了表演用的话筒和舞台用品。</p>
+                </div>
+                <p class="join-text">All handmade crafts are sold at special festivals, charity events, and school sales — and every yuan raised goes directly to supporting children with autism.</p>
+                <p class="join-text-cn cn">所有手工艺品会在特殊节日、公益活动及义卖时售出，所得款项全部用于支持自闭症小朋友。</p>
+                <div style="margin-top: 40px;">
+                    <a href="https://forms.cloud.microsoft/r/b5sqAa2mnf" target="_blank" rel="noopener" class="join-cta">Sign Up Now →</a>
+                    <p class="join-cta-note">This is our registration link — we'd love to have you join us!</p>
+                    <p class="join-cta-note cn">这是我们的报名链接——期待你的加入！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <p class="footer-logo">Beyond</p>
+        <p class="footer-tagline">Beyond the Stars · 来自星星的孩子们</p>
+        <div class="footer-stars">✨⭐✨⭐✨</div>
+        <p class="footer-copy">© 2026 Beyond Team. Made with love, one stitch at a time.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Mobile nav toggle
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+
+</body></html>
