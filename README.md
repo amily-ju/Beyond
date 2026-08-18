@@ -1,15 +1,15 @@
 # Beyond
 
-## **社团类别 Club Category:**	
+## **社团类别 Club Category**	
 服务公益 Service & Community
 
-## **目前成员 Current Club Members:**  
+## **目前成员 Current Club Members**  
 宋咿含 Eliza Song, 王雨墨 Momo Wang, 鞠沁怡 Amily Ju, 戴琬清 Anna Dai, 杨丹译 Martina Yang
 
-## **目标成员人数 Target Number of Members:**  
+## **目标成员人数 Target Number of Members**  
 10-15
 
-## **为什么我们希望建立本社团？Why do we want to establish this club?**
+## **为什么我们希望建立本社团 Why do we want to establish this club**
 
 ⾃闭症（孤独症）在当今⼉童群体中的现象⽇益普遍。由于沟通能⼒的局限，这些孩⼦往往被误解，甚⾄被排斥在群体之外。
 
