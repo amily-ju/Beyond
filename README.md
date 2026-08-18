@@ -1,15 +1,18 @@
 # Beyond
 
-## **社团类别 Club Category**	
+### **社团类别 Club Category**	
+
 服务公益 Service & Community
 
-## **目前成员 Current Club Members**  
+### **目前成员 Current Club Members**  
+
 宋咿含 Eliza Song, 王雨墨 Momo Wang, 鞠沁怡 Amily Ju, 戴琬清 Anna Dai, 杨丹译 Martina Yang
 
-## **目标成员人数 Target Number of Members**  
+### **目标成员人数 Target Number of Members**  
+
 10-15
 
-## **为什么我们希望建立本社团 Why do we want to establish this club**
+### **为什么我们希望建立本社团 Why do we want to establish this club**
 
 ⾃闭症（孤独症）在当今⼉童群体中的现象⽇益普遍。由于沟通能⼒的局限，这些孩⼦往往被误解，甚⾄被排斥在群体之外。
 
@@ -31,7 +34,7 @@ This club, in partnering with this outside organization, wants to show students 
 
 We also believe this club can help students develop empathy, teamwork, and confidence while contributing to a meaningful cause.
 
-## **活动目标 Goals**
+### **活动目标 Goals**
 
 我们希望营造⼀个积极且友好的环境，让同学们能够通过戏剧与表演活动与⾃闭症⼉童建⽴连接。
 
@@ -44,3 +47,4 @@ Through opening this club, We hope to create a positive and welcoming environmen
 We want club members to learn how to communicate more effectively, collaborate with others, and become more aware of different needs within the community. 
 
 The activities can help the autistic children build confidence, self-expression, and social interaction skills in a fun and supportive setting; while also teaching YKPS students about empathy and spreading awareness.
+
