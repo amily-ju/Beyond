@@ -1,0 +1,2868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond · Beyond the Stars</title>
+    <meta name="description" content="Beyond — a student-led charity project supporting children with autism. Beyond the Stars.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            --pink: #FF1493;
+            --pink-light: #FF69B4;
+            --pink-soft: #FFF0F7;
+            --blue: #1E90FF;
+            --blue-light: #00BFFF;
+            --blue-soft: #EBF6FF;
+            --rainbow-red: #FF4B6E;
+            --rainbow-orange: #FF9F43;
+            --rainbow-yellow: #FECA57;
+            --rainbow-green: #2ED573;
+            --rainbow-blue: #1E90FF;
+            --rainbow-indigo: #5352ED;
+            --rainbow-violet: #A55EEA;
+            --text-dark: #2D3436;
+            --text-gray: #636E72;
+            --text-light: #B2BEC3;
+            --bg-white: #FFFFFF;
+            --bg-soft: #F8F9FF;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        /* ========== Reset ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ========== Typography ========== */
+        h1, h2, h3, h4 { font-family: 'Comfortaa', 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+        .cn { font-family: 'Noto Sans SC', sans-serif; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 10px;
+        }
+        .section-title-cn {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-gray);
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        /* ========== Layout ========== */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 100px 0; position: relative; }
+
+        /* ========== Navbar ========== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled { padding: 12px 0; box-shadow: var(--shadow-sm); }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 32px;
+        }
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--rainbow-red); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-blue), var(--rainbow-violet));
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-blue));
+            background-size: 150% 150%;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            animation: gradientShift 4s ease infinite;
+        }
+        .nav-cta::after { display: none; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,75,110,0.35); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--text-dark); }
+
+        /* ========== Hero ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 24px 80px;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #FFF0F7 0%, #FFF9EB 25%, #EBFFF4 50%, #EBF6FF 75%, #F6F0FF 100%);
+            z-index: -2;
+        }
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.45;
+            z-index: -1;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+        .hero-blob:nth-child(1) { width: 420px; height: 420px; background: var(--rainbow-red); top: 8%; left: -8%; }
+        .hero-blob:nth-child(2) { width: 380px; height: 380px; background: var(--rainbow-blue); bottom: 0%; right: -8%; animation-delay: -4s; }
+        .hero-blob:nth-child(3) { width: 300px; height: 300px; background: var(--rainbow-yellow); top: 55%; left: 55%; animation-delay: -8s; }
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(30px,-30px) scale(1.1); }
+            66% { transform: translate(-20px,20px) scale(0.95); }
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-stars {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 12px;
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .hero-title {
+            margin: 0 auto;
+            display: block;
+            max-width: min(520px, 70vw);
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 12px 30px rgba(0,0,0,0.12));
+            transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+        }
+        .hero-title:hover { transform: scale(1.03) rotate(-1deg); }
+        .hero-title-wrap { display: flex; justify-content: center; }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes pulseHint {
+            0%, 100% { opacity: 0.75; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(4px); }
+        }
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-gray);
+            margin-top: 12px;
+            font-weight: 400;
+            letter-spacing: 4px;
+        }
+        .hero-tagline {
+            margin-top: 30px;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+        .hero-tagline-cn {
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+        .hero-cta-group {
+            margin-top: 40px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--rainbow-red) 0%, var(--rainbow-orange) 25%, var(--rainbow-yellow) 50%, var(--rainbow-green) 75%, var(--rainbow-blue) 100%);
+            background-size: 200% 200%;
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255,75,110,0.3);
+            animation: gradientShift 5s ease infinite;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,75,110,0.4); }
+        .btn-secondary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: white;
+            color: var(--rainbow-indigo);
+            border: 2px solid var(--rainbow-violet);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: linear-gradient(135deg, rgba(255,75,110,0.08), rgba(83,82,237,0.08)); transform: translateY(-3px); }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--text-light);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ========== Section: Divider Wave ========== */
+        .wave-divider { display: block; width: 100%; height: 60px; }
+
+        /* ========== Team Section ========== */
+        #team { background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F5 100%); }
+
+        /* Team Group Photo */
+        .team-photo-wrap {
+            position: relative;
+            max-width: 720px;
+            margin: 10px auto 60px;
+        }
+        .team-photo {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            display: block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+        .team-photo:hover { transform: scale(1.02); }
+        .team-photo-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #FF4B6E 0%, #FF9F43 25%, #FECA57 45%, #2ED573 65%, #1E90FF 85%, #A55EEA 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite;
+            z-index: 0;
+        }
+        .team-photo-wrap::after {
+            content: '';
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 90%; height: 90%;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(255,75,110,0.18), rgba(30,144,255,0.18));
+            filter: blur(30px);
+            z-index: 0;
+        }
+        .team-photo-caption {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        .team-photo-caption .cn {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        .team-photo-badge {
+            position: absolute;
+            bottom: -18px; left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .team-photo-badge .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-green), var(--rainbow-blue));
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .team-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 36px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+        }
+        .team-card:nth-child(1)::before { background: linear-gradient(90deg, #FF4B6E, #FF6B8A); }
+        .team-card:nth-child(2)::before { background: linear-gradient(90deg, #FF9F43, #FFB86F); }
+        .team-card:nth-child(3)::before { background: linear-gradient(90deg, #FECA57, #FFD970); }
+        .team-card:nth-child(4)::before { background: linear-gradient(90deg, #2ED573, #5BE58A); }
+        .team-card:nth-child(5)::before { background: linear-gradient(90deg, #1E90FF, #5352ED); }
+        .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+        .team-card:nth-child(1):hover { border-color: #FF4B6E; }
+        .team-card:nth-child(2):hover { border-color: #FF9F43; }
+        .team-card:nth-child(3):hover { border-color: #FECA57; }
+        .team-card:nth-child(4):hover { border-color: #2ED573; }
+        .team-card:nth-child(5):hover { border-color: #1E90FF; }
+        .team-avatar {
+            width: 80px; height: 80px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            object-fit: cover;
+            object-position: center;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .team-card.clickable { cursor: pointer; }
+        .team-card.clickable:hover .team-avatar {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .team-card:nth-child(1) .team-avatar { background: linear-gradient(135deg, #FF4B6E, #FF6B8A); }
+        .team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, #FF9F43, #FFB86F); }
+        .team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, #FECA57, #FFD970); }
+        .team-card:nth-child(4) .team-avatar { background: linear-gradient(135deg, #2ED573, #5BE58A); }
+        .team-card:nth-child(5) .team-avatar { background: linear-gradient(135deg, #1E90FF, #5352ED); }
+        .team-name { font-size: 1.15rem; font-weight: 600; }
+        .team-name-cn { font-size: 0.95rem; color: var(--text-gray); margin-top: 4px; }
+
+        /* ========== Philosophy Section ========== */
+        #philosophy {
+            background: linear-gradient(135deg, rgba(255,75,110,0.08) 0%, rgba(255,159,67,0.08) 30%, rgba(46,213,115,0.08) 60%, rgba(30,144,255,0.08) 100%);
+            text-align: center;
+        }
+        .quote-block {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .quote-mark {
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 0.5;
+            margin-bottom: 20px;
+        }
+        .quote-text {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+        .quote-text-cn {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-gray);
+            margin-top: 16px;
+            font-weight: 400;
+        }
+        .quote-stars { margin-top: 24px; font-size: 1.5rem; letter-spacing: 8px; }
+
+        /* ========== History Section ========== */
+        #history { background: linear-gradient(180deg, #FFF8F5 0%, #FFFFFF 100%); }
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 36px 20px;
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        .stat-card.clickable {
+            cursor: pointer;
+            position: relative;
+        }
+        .stat-card.clickable:hover {
+            background: linear-gradient(135deg, rgba(255,75,110,0.08) 0%, rgba(255,159,67,0.08) 33%, rgba(46,213,115,0.08) 66%, rgba(30,144,255,0.08) 100%);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(255,75,110,0.15);
+            border-color: rgba(255,75,110,0.2);
+        }
+        .stat-card.clickable::after {
+            content: '点击查看 →';
+            position: absolute;
+            bottom: 10px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-light);
+            opacity: 0;
+            transition: opacity 0.3s;
+            letter-spacing: 1px;
+        }
+        .stat-card.clickable:hover::after { opacity: 1; color: var(--rainbow-red); }
+        .stat-card.clickable::before {
+            content: '🔍';
+            position: absolute;
+            top: 14px; right: 16px;
+            font-size: 1rem;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+        }
+        .stat-card.clickable:hover::before { opacity: 1; }
+        .stat-number {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-green), var(--rainbow-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 150% 150%;
+            animation: gradientShift 4s ease infinite;
+        }
+        .stat-label { font-size: 0.95rem; color: var(--text-gray); margin-top: 8px; font-weight: 500; }
+        .stat-label-cn { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+        .history-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .history-text p { font-size: 1.05rem; color: var(--text-gray); margin-bottom: 12px; line-height: 1.8; }
+        .history-text .cn-text { font-size: 0.95rem; color: var(--text-light); }
+
+        /* ========== Timeline Modal ========== */
+        .modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(45, 52, 54, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-backdrop.open { opacity: 1; visibility: visible; }
+        .modal {
+            background: white;
+            border-radius: 24px;
+            max-width: 720px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
+
+        /* Team Member Modal */
+        .member-modal .modal { max-width: 760px; }
+        .member-hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+        .member-avatar-large {
+            width: 160px; height: 160px;
+            border-radius: 24px;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+        .member-intro { flex: 1; min-width: 220px; }
+        .member-intro h4 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            font-family: 'Comfortaa', 'Poppins', sans-serif;
+        }
+        .member-intro .member-name-cn {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            margin-bottom: 14px;
+        }
+        .member-intro .member-role {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-soft), var(--blue-soft));
+            color: var(--pink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 14px;
+        }
+        .member-intro p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+        .member-bio {
+            background: linear-gradient(135deg, var(--pink-soft) 0%, var(--blue-soft) 100%);
+            border-radius: 18px;
+            padding: 22px 24px;
+            margin-bottom: 30px;
+        }
+        .member-bio p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-family: 'Noto Sans SC', 'Poppins', sans-serif;
+        }
+        .member-bio .member-email {
+            margin-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--blue);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .member-gallery-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: var(--text-dark);
+        }
+        .member-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.65));
+            color: white;
+            font-size: 0.75rem;
+            padding: 22px 10px 10px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .gallery-caption { opacity: 1; }
+        .member-gallery.gallery-single {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .member-gallery.gallery-single .gallery-item img {
+            height: 380px;
+        }
+        .modal-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 28px 32px 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-radius: 24px 24px 0 0;
+            z-index: 2;
+        }
+        .modal-close {
+            position: absolute;
+            top: 18px; right: 18px;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-soft);
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover { background: var(--pink-soft); color: var(--pink); transform: rotate(90deg); }
+        .modal-title { font-size: 1.6rem; margin-bottom: 4px; }
+        .modal-title-cn { font-size: 1rem; color: var(--text-gray); font-weight: 400; }
+        .modal-body { padding: 30px 32px 32px; }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px; top: 8px; bottom: 8px;
+            width: 3px;
+            background: linear-gradient(180deg, #FF4B6E 0%, #FF9F43 25%, #FECA57 50%, #2ED573 75%, #1E90FF 100%);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 26px;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px; top: 6px;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--blue);
+            background: var(--blue);
+        }
+        .timeline-item:nth-child(1)::before { background: #FF4B6E; box-shadow: 0 0 0 2px #FF4B6E; }
+        .timeline-item:nth-child(2)::before { background: #FF9F43; box-shadow: 0 0 0 2px #FF9F43; }
+        .timeline-item:nth-child(3)::before { background: #FECA57; box-shadow: 0 0 0 2px #FECA57; }
+        .timeline-item:nth-child(4)::before { background: #2ED573; box-shadow: 0 0 0 2px #2ED573; }
+        .timeline-date {
+            display: inline-block;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-gray);
+            background: var(--bg-soft);
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 8px;
+        }
+        .timeline-event {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 14px;
+            padding: 16px 18px;
+            transition: all 0.3s;
+        }
+        .timeline-event:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            border-color: var(--pink-light);
+        }
+        .timeline-event h4 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            font-weight: 700;
+        }
+        .timeline-event .cn-event {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .timeline-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .timeline-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        .timeline-tag.amount {
+            background: linear-gradient(135deg, #FFF0F7, #EBF6FF);
+            color: var(--pink);
+        }
+        .timeline-tag.recipient {
+            background: var(--blue-soft);
+            color: var(--blue);
+        }
+        .timeline-tag.activity {
+            background: #FFF8E6;
+            color: #C89000;
+        }
+        .timeline-description {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+        .timeline-description-cn {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-top: 4px;
+        }
+        .modal-footer {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .modal-footer-stars { font-size: 1.2rem; letter-spacing: 8px; margin-bottom: 10px; }
+        .modal-footer-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .modal-footer-cn {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            margin-top: 4px;
+        }
+
+        /* ========== Simple Timeline Modal ========== */
+        .timeline-hint {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .simple-timeline {
+            position: relative;
+            padding: 10px 0;
+        }
+        .simple-timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 4px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, #FF4B6E 0%, #FF9F43 25%, #FECA57 50%, #2ED573 75%, #1E90FF 100%);
+            border-radius: 2px;
+        }
+        .simple-timeline-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: start;
+            gap: 24px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .simple-timeline-row:last-child { margin-bottom: 0; }
+        .simple-timeline-row.left .money-chip { justify-self: end; }
+        .simple-timeline-row.left .simple-timeline-detail { grid-column: 3; }
+        .simple-timeline-row.right .money-chip { justify-self: start; grid-column: 3; }
+        .simple-timeline-row.right .simple-timeline-detail { grid-column: 1; grid-row: 1; }
+        .simple-timeline-row.right .simple-timeline-dot { grid-column: 2; grid-row: 1; }
+        .simple-timeline-dot {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            border: 3px solid white;
+            z-index: 2;
+            margin-top: 16px;
+        }
+        .money-chip {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 14px 22px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 120px;
+            position: relative;
+        }
+        .money-chip::after {
+            content: 'Click · 点击';
+            position: absolute;
+            bottom: -18px;
+            font-size: 0.65rem;
+            color: var(--text-light);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .money-chip:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-color: var(--rainbow-pink, var(--pink)); }
+        .money-chip:hover::after { opacity: 1; }
+        .money-chip[aria-expanded="true"] { background: linear-gradient(135deg, #FFF0F7, #EBF6FF); border-color: var(--pink); }
+        .money-chip-amount {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .money-chip-date {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .simple-timeline-detail {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            padding: 16px 18px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            opacity: 0;
+            transform: translateY(10px);
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+        .simple-timeline-detail.open {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 1200px;
+            padding: 16px 18px;
+            pointer-events: auto;
+        }
+        .simple-timeline-detail h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+        }
+        .simple-timeline-detail p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+        .simple-timeline-detail .cn { font-size: 0.8rem; color: var(--text-light); }
+        .simple-timeline-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            background: #FFF8E6;
+            color: #C89000;
+            border-radius: 50px;
+            margin-top: 8px;
+        }
+        .mic-story {
+            display: flex;
+            gap: 14px;
+            background: linear-gradient(135deg, rgba(255,75,110,0.08), rgba(83,82,237,0.08));
+            border-radius: 14px;
+            padding: 14px;
+            margin: 14px 0;
+            align-items: flex-start;
+        }
+        .mic-story-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .mic-story-text p { margin-bottom: 4px; }
+        .mic-story-text strong { display: block; font-size: 0.92rem; margin-bottom: 4px; color: var(--text-dark); }
+        .sf-folder {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            margin: 12px 0;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, rgba(255,75,110,0.08), rgba(46,213,115,0.08));
+            border: 1.5px dashed rgba(255,75,110,0.45);
+            border-radius: 14px;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+            color: var(--text-dark);
+            transition: all 0.25s;
+        }
+        .sf-folder:hover {
+            border-color: var(--rainbow-orange);
+            background: linear-gradient(135deg, rgba(255,75,110,0.14), rgba(46,213,115,0.14));
+            transform: translateY(-2px);
+        }
+        .sf-folder-icon { font-size: 1.9rem; flex-shrink: 0; }
+        .sf-folder-text { flex: 1; min-width: 0; }
+        .sf-folder-text strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+        .sf-folder-text span { display: block; font-size: 0.82rem; color: var(--text-gray); }
+        .sf-folder-arrow { font-size: 1.2rem; color: var(--rainbow-indigo); flex-shrink: 0; transition: transform 0.25s; }
+        .sf-folder:hover .sf-folder-arrow { transform: translateX(4px); }
+
+        /* Spring Fair Photo Gallery */
+        .photo-gallery-modal .modal { max-width: 860px; }
+        .photo-gallery-hint { font-size: 0.85rem; color: var(--text-gray); margin-bottom: 14px; }
+        .photo-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .photo-gallery-grid a {
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        .photo-gallery-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s;
+            display: block;
+        }
+        .photo-gallery-grid a:hover img { transform: scale(1.06); }
+
+        /* ========== Tradition Button & Modal ========== */
+        .tradition-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+            padding: 12px 28px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 50px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .tradition-btn:hover { background: white; color: var(--rainbow-indigo); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .tradition-btn-icon { font-size: 1.1rem; }
+        .tradition-btn-cn { font-weight: 400; opacity: 0.85; font-size: 0.85rem; }
+        .tradition-intro { margin-bottom: 22px; }
+        .tradition-intro p { font-size: 0.95rem; color: var(--text-gray); line-height: 1.7; margin-bottom: 10px; }
+        .tradition-intro .cn { font-size: 0.88rem; color: var(--text-light); }
+        .tradition-board {
+            background: white;
+            border-radius: 20px;
+            padding: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin-bottom: 22px;
+            text-align: center;
+        }
+        .tradition-board img {
+            width: 100%;
+            border-radius: 14px;
+            margin-bottom: 10px;
+        }
+        .tradition-board-caption {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .tradition-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .tradition-step {
+            text-align: center;
+            padding: 16px 10px;
+            background: linear-gradient(135deg, rgba(255,75,110,0.06), rgba(83,82,237,0.06));
+            border-radius: 16px;
+        }
+        .tradition-step-num {
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px;
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .tradition-step p { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 2px; font-weight: 500; }
+        .tradition-step .cn { font-size: 0.75rem; color: var(--text-light); }
+
+        /* ========== Autism Section ========== */
+        #autism {
+            background: linear-gradient(180deg, #FFF9F0 0%, #FFFFFF 50%, #F0F9FF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        #autism::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,75,110,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #autism::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(83,82,237,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #autism .section-title {
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-green), var(--rainbow-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .autism-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .autism-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            width: 100%;
+            max-width: 380px;
+            padding: 18px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            backdrop-filter: blur(10px);
+        }
+        .puzzle-piece {
+            aspect-ratio: 1;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .puzzle-piece::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .puzzle-piece:hover { transform: scale(1.1) rotate(-4deg); box-shadow: 0 16px 44px rgba(0,0,0,0.22); }
+        .puzzle-piece:nth-child(1) { background: linear-gradient(135deg, var(--rainbow-red), #FF758C); }
+        .puzzle-piece:nth-child(2) { background: linear-gradient(135deg, var(--rainbow-orange), var(--rainbow-yellow)); }
+        .puzzle-piece:nth-child(3) { background: linear-gradient(135deg, var(--rainbow-green), #26DE81); }
+        .puzzle-piece:nth-child(4) { background: linear-gradient(135deg, var(--rainbow-blue), var(--rainbow-indigo)); }
+        .autism-content h3 { font-size: 1.7rem; margin-bottom: 8px; }
+        .autism-content h3 + .cn { font-size: 1.25rem; color: var(--text-gray); margin-bottom: 20px; }
+        .autism-content p { color: var(--text-gray); margin-bottom: 12px; line-height: 1.8; }
+        .autism-content .cn-text { font-size: 0.92rem; color: var(--text-light); margin-bottom: 20px; }
+        .autism-highlight {
+            background: linear-gradient(135deg, rgba(255,75,110,0.08), rgba(255,159,67,0.08), rgba(46,213,115,0.08), rgba(30,144,255,0.08));
+            border-left: 5px solid;
+            border-image: linear-gradient(180deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-green), var(--rainbow-blue)) 1;
+            border-radius: 0 16px 16px 0;
+            padding: 22px 26px;
+            margin-top: 24px;
+        }
+        .autism-highlight p { margin-bottom: 6px; color: var(--text-dark); font-weight: 500; }
+        .autism-highlight .cn-text { color: var(--text-gray); }
+
+        /* ========== Autism Module Cards ========== */
+        .autism-modules {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 50px auto 0;
+            max-width: 560px;
+        }
+        .autism-module-card {
+            border-radius: 32px;
+            aspect-ratio: 1;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .autism-module-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+        }
+        .autism-module-card .module-icon {
+            font-size: 5rem;
+            line-height: 1;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+            transition: transform 0.35s ease;
+            user-select: none;
+        }
+        .autism-module-card:hover .module-icon {
+            transform: scale(1.12) rotate(-4deg);
+        }
+        /* Card 1 — Metaphor's Crack (rose red) */
+        .autism-module-card:nth-child(1) {
+            background: #E84A8B;
+        }
+        .autism-module-card:nth-child(1) .module-icon {
+            font-size: 4.2rem;
+        }
+        /* Card 2 — Object-Mediator (orange) */
+        .autism-module-card:nth-child(2) {
+            background: #F5A84C;
+        }
+        /* Card 3 — Weaving Mirror (mint green) */
+        .autism-module-card:nth-child(3) {
+            background: #58D39A;
+        }
+        /* Card 4 — Parallel Hypothesis (deep blue) */
+        .autism-module-card:nth-child(4) {
+            background: #4169E1;
+        }
+        /* Module detail modal body */
+        .module-detail-body { padding: 0 32px 36px; }
+        .module-detail-hero {
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .module-detail-hero img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: center;
+        }
+        .module-detail-hero .hero-source {
+            position: absolute;
+            bottom: 8px; right: 10px;
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.75);
+            background: rgba(0,0,0,0.4);
+            padding: 3px 8px;
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+        }
+        .module-detail-intro {
+            background: var(--bg-soft);
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+        }
+        .module-detail-intro p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        .module-detail-intro .intro-cn {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+        .module-detail-section {
+            margin-bottom: 26px;
+        }
+        .module-detail-section h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .module-detail-section .section-sub-cn {
+            font-size: 0.88rem;
+            color: var(--text-gray);
+            margin-bottom: 14px;
+        }
+        .module-detail-section p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+        .module-detail-section .cn-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.75;
+        }
+        .module-thought-box {
+            background: linear-gradient(135deg, var(--pink-soft) 0%, var(--blue-soft) 100%);
+            border-radius: 16px;
+            padding: 24px 26px;
+            margin: 26px 0;
+        }
+        .module-thought-box p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-style: italic;
+            line-height: 1.8;
+        }
+        .module-thought-box .cn-text {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 8px;
+        }
+        .module-quote-box {
+            border-left: 4px solid var(--pink);
+            background: linear-gradient(135deg, var(--pink-soft), var(--blue-soft));
+            border-radius: 0 16px 16px 0;
+            padding: 24px 28px;
+            margin-top: 30px;
+        }
+        .module-quote-box .quote-en {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        .module-quote-box .quote-cn {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            margin-top: 10px;
+            line-height: 1.7;
+        }
+        .module-quote-box .quote-attr {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        .module-quote-box .quote-relate {
+            font-size: 0.88rem;
+            color: var(--text-gray);
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            line-height: 1.7;
+        }
+        .module-quote-box .quote-relate .cn-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 6px;
+        }
+
+        /* ========== Activities Section ========== */
+        #activities {
+            background: linear-gradient(180deg, #F5FFFB 0%, #F0F9FF 100%);
+        }
+        .activity-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        .activity-intro p { color: var(--text-gray); }
+        .activity-intro .cn-text { font-size: 0.92rem; color: var(--text-light); margin-top: 8px; }
+        .activity-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            position: relative;
+        }
+        .step-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+        .step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .step-number {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+        .step-card:nth-child(1) .step-number { background: linear-gradient(135deg, var(--rainbow-red), #FF758C); }
+        .step-card:nth-child(2) .step-number { background: linear-gradient(135deg, var(--rainbow-orange), var(--rainbow-yellow)); }
+        .step-card:nth-child(3) .step-number { background: linear-gradient(135deg, var(--rainbow-green), #26DE81); }
+        .step-card:nth-child(4) .step-number { background: linear-gradient(135deg, var(--rainbow-blue), var(--rainbow-indigo)); }
+        .step-card h4 { font-size: 1.1rem; margin-bottom: 4px; }
+        .step-card .cn { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 12px; }
+        .step-card p { font-size: 0.88rem; color: var(--text-gray); line-height: 1.7; }
+        .step-card .cn-text { font-size: 0.82rem; color: var(--text-light); margin-top: 6px; }
+
+        .dialogue-media-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 44px;
+        }
+        .dialogue-media-btn {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            min-width: 130px;
+            padding: 18px 28px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(46, 213, 115, 0.15);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .dialogue-media-btn:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 14px 34px rgba(46, 213, 115, 0.22);
+        }
+        .dialogue-media-btn:nth-child(1):hover { border-color: var(--rainbow-red); }
+        .dialogue-media-btn:nth-child(2):hover { border-color: var(--rainbow-blue); }
+        .dialogue-media-btn:nth-child(3):hover { border-color: var(--rainbow-yellow); }
+        .dialogue-media-icon { font-size: 1.8rem; line-height: 1; }
+        .dialogue-media-label { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+        .dialogue-media-cn { font-size: 0.82rem; color: var(--text-gray); margin-top: -2px; }
+
+        .dialogue-modal .modal { max-width: 900px; }
+        .dialogue-video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .dialogue-video-item video {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+            background: #000;
+        }
+        .dialogue-video-item p {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 8px;
+        }
+        .dialogue-clue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .dialogue-clue-grid img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .dialogue-clue-grid img:hover { transform: scale(1.03); }
+        .dialogue-coming-soon {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+        .dialogue-coming-soon .cn { display: block; font-size: 0.9rem; color: var(--text-light); margin-top: 6px; }
+
+        @media (max-width: 640px) {
+            .dialogue-media-btn { min-width: 100px; padding: 14px 18px; }
+            .dialogue-media-label { font-size: 0.9rem; }
+            .dialogue-video-grid { grid-template-columns: 1fr; }
+            .dialogue-clue-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ========== Join Section ========== */
+        #join {
+            background: linear-gradient(135deg, var(--rainbow-red) 0%, var(--rainbow-orange) 20%, var(--rainbow-yellow) 40%, var(--rainbow-green) 60%, var(--rainbow-blue) 80%, var(--rainbow-violet) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        #join::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+        .join-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .join-content h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 10px; }
+        .join-content .join-subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 8px; }
+        .join-content .cn { font-size: 1rem; opacity: 0.8; margin-bottom: 30px; }
+        .huddle-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 28px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .join-text { font-size: 1.05rem; opacity: 0.92; line-height: 1.8; max-width: 650px; margin: 0 auto 12px; }
+        .join-text-cn { font-size: 0.92rem; opacity: 0.75; line-height: 1.8; max-width: 650px; margin: 0 auto 30px; }
+        .join-cta {
+            display: inline-block;
+            padding: 18px 48px;
+            background: white;
+            color: var(--rainbow-red);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .join-cta:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(0,0,0,0.3); color: var(--rainbow-indigo); }
+        .join-cta-note { font-size: 0.85rem; opacity: 0.7; margin-top: 14px; }
+        .join-cta-note .cn { font-size: 0.8rem; }
+
+        /* ========== Footer ========== */
+        .footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 50px 24px 30px;
+        }
+        .footer-logo {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-blue), var(--rainbow-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .footer-tagline { font-size: 0.85rem; margin-bottom: 20px; }
+        .footer-stars { font-size: 1.2rem; letter-spacing: 8px; margin-bottom: 20px; }
+        .footer-copy { font-size: 0.8rem; opacity: 0.5; }
+
+        /* ========== Animations ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: white;
+                padding: 20px;
+                gap: 16px;
+                box-shadow: var(--shadow-md);
+            }
+            .autism-grid { grid-template-columns: 1fr; gap: 40px; }
+            .autism-visual { order: -1; }
+            .autism-modules { grid-template-columns: 1fr 1fr; gap: 16px; max-width: 100%; }
+            .autism-module-card { border-radius: 24px; }
+            .autism-module-card .module-icon { font-size: 3.6rem; }
+            .autism-module-card:nth-child(1) .module-icon { font-size: 3rem; }
+            .module-detail-hero img { height: 200px; }
+            section { padding: 70px 0; }
+            .hero { min-height: 90vh; }
+            .modal-header { padding: 22px 22px 14px; }
+            .modal-body { padding: 22px; }
+            .modal-title { font-size: 1.3rem; }
+            .simple-timeline-row {
+                grid-template-columns: 1fr auto;
+                gap: 14px;
+            }
+            .simple-timeline-line { left: 24px; transform: none; }
+            .simple-timeline-dot { margin-top: 12px; }
+            .simple-timeline-row.left .money-chip,
+            .simple-timeline-row.right .money-chip { grid-column: 1; justify-self: start; grid-row: 1; }
+            .simple-timeline-row.left .simple-timeline-detail,
+            .simple-timeline-row.right .simple-timeline-detail { grid-column: 1 / span 2; grid-row: 2; }
+            .simple-timeline-row.right .simple-timeline-detail { grid-column: 1 / span 2; }
+            .money-chip { min-width: 100px; padding: 10px 16px; }
+            .money-chip-amount { font-size: 1.05rem; }
+            .photo-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .tradition-steps { grid-template-columns: repeat(2, 1fr); }
+            .mic-story { flex-direction: column; gap: 8px; }
+            .team-photo-wrap { margin-bottom: 50px; }
+            .team-photo-badge { font-size: 0.75rem; padding: 8px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo"><img src="images/beyond-logo.png?v=2" alt="Beyond"></a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#autism">Autism</a>
+                <a href="#team">Team</a>
+                <a href="#philosophy">Philosophy</a>
+                <a href="#history">History</a>
+                <a href="#activities">Activities</a>
+                <a href="#join" class="nav-cta">Join Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-content">
+            <div class="hero-stars">&#10024;&#11088;&#10024;</div>
+            <div class="hero-title-wrap">
+                <img src="images/beyond-logo.png?v=2" alt="Beyond" class="hero-title">
+            </div>
+            <p class="hero-subtitle">Beyond the Stars</p>
+            <p class="hero-tagline">A student-led charity project supporting children with autism — one scarf, one story, one star at a time.</p>
+            <p class="hero-tagline cn hero-tagline-cn">一个由学生发起的公益项目，关爱来自星星的孩子们 —— 每一条围巾，每一个故事，每一颗星。</p>
+            <div class="hero-cta-group">
+                <a href="#autism" class="btn-primary">Learn About Autism</a>
+                <a href="#team" class="btn-secondary">Meet the Team</a>
+            </div>
+        </div>
+        <a href="#autism" class="scroll-indicator">&#9662;</a>
+    </section>
+
+    <!-- ===== Autism ===== -->
+    <section id="autism">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom: 50px;">
+                <span class="section-label" style="background:linear-gradient(135deg, rgba(255,75,110,0.12), rgba(83,82,237,0.12)); color:var(--rainbow-indigo);">Understanding</span>
+                <h2 class="section-title">What is Autism?</h2>
+                <p class="section-title-cn cn">了解自闭症</p>
+            </div>
+            <div class="autism-grid">
+                <div class="autism-visual reveal">
+                    <div class="puzzle-container">
+                        <div class="puzzle-piece" onclick="openModuleModal('metaphorCrack')" role="button" tabindex="0" aria-label="Open Metaphor's Crack module">👂🏻</div>
+                        <div class="puzzle-piece" onclick="openModuleModal('objectMediator')" role="button" tabindex="0" aria-label="Open Object-Mediator module">🧸</div>
+                        <div class="puzzle-piece" onclick="openModuleModal('weavingMirror')" role="button" tabindex="0" aria-label="Open Weaving Mirror module">🧣</div>
+                        <div class="puzzle-piece" onclick="openModuleModal('parallelHypothesis')" role="button" tabindex="0" aria-label="Open Parallel Hypothesis module">⚖️</div>
+                    </div>
+                    <p style="text-align:center; margin-top:18px; font-size:0.9rem; color:var(--rainbow-indigo); font-weight:600; letter-spacing:0.5px; animation: pulseHint 2s ease-in-out infinite;">✨ Click each icon to explore · 点击图标探索 →</p>
+                </div>
+                <div class="autism-content reveal">
+                    <h3>More Than a Diagnosis</h3>
+                    <p class="cn">不止于一个诊断</p>
+                    <p>Autism, or Autism Spectrum Disorder (ASD), is a neurodevelopmental condition that affects how a person communicates, interacts, and experiences the world. Children with autism may see, hear, and feel things differently — and that difference is not a deficit, but a different way of being.</p>
+                    <p class="cn-text cn">自闭症（孤独症谱系障碍，ASD）是一种神经发育性疾病，影响着一个人的沟通方式、社交互动和对世界的感知。自闭症孩子可能以不同的方式去看、去听、去感受——这种不同不是缺陷，而是一种独特的存在方式。</p>
+                    <div class="autism-highlight">
+                        <p>Our purpose is not only to provide financial support for their daily lives and special needs —</p>
+                        <p>it is to be there, to sit beside them, and to accompany them.</p>
+                        <p class="cn-text cn">我们的目的不仅仅是用金钱支持他们的日常生活和特殊需求——更重要的是，我们需要陪伴他们。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Team ===== -->
+    <section id="team">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label" style="background:linear-gradient(135deg, rgba(255,75,110,0.12), rgba(255,159,67,0.12)); color:var(--rainbow-red);">Our Team</span>
+                <h2 class="section-title">The Founding Members</h2>
+                <p class="section-title-cn cn">初始团队</p>
+            </div>
+
+            <div class="team-photo-wrap reveal">
+                <img src="images/group-selfie.jpg" alt="The Beyond founding team — Anna, Eliza, Momo, Martina, and Amily" class="team-photo">
+                <div class="team-photo-badge">
+                    <span class="dot"></span>
+                    <span>Beyond · 2024 — 2026</span>
+                </div>
+                <p class="team-photo-caption">
+                    Five hearts, one mission — Together, beyond the stars.
+                    <span class="cn">五个女孩，一个使命 —— 一起，跨越星辰。</span>
+                </p>
+            </div>
+
+            <div class="team-grid reveal">
+                <div class="team-card clickable" id="anna-card" onclick="openAnnaModal()" role="button" tabindex="0" aria-label="View Anna's profile">
+                    <img src="images/anna-photo.jpg" alt="Anna 戴琬清" class="team-avatar">
+                    <p class="team-name">Anna</p>
+                    <p class="team-name-cn cn">戴琬清</p>
+                </div>
+                <div class="team-card clickable" id="eliza-card" onclick="openElizaModal()" role="button" tabindex="0" aria-label="View Eliza's profile">
+                    <img src="images/eliza-photo.jpg" alt="Eliza 宋咿含" class="team-avatar">
+                    <p class="team-name">Eliza</p>
+                    <p class="team-name-cn cn">宋咿含</p>
+                </div>
+                <div class="team-card clickable" id="momo-card" onclick="openMomoModal()" role="button" tabindex="0" aria-label="View Momo's profile">
+                    <img src="images/momo-photo.jpg" alt="Momo 王雨墨" class="team-avatar">
+                    <p class="team-name">Momo</p>
+                    <p class="team-name-cn cn">王雨墨</p>
+                </div>
+                <div class="team-card clickable" id="martina-card" onclick="openMartinaModal()" role="button" tabindex="0" aria-label="View Martina's profile">
+                    <img src="images/martina-photo.jpg" alt="Martina 杨丹译" class="team-avatar">
+                    <p class="team-name">Martina</p>
+                    <p class="team-name-cn cn">杨丹译</p>
+                </div>
+                <div class="team-card clickable" id="amily-card" onclick="openAmilyModal()" role="button" tabindex="0" aria-label="View Amily's profile">
+                    <img src="images/amily-avatar.jpg?v=2" alt="Amily 鞠沁怡" class="team-avatar">
+                    <p class="team-name">Amily</p>
+                    <p class="team-name-cn cn">鞠沁怡</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Philosophy ===== -->
+    <section id="philosophy">
+        <div class="container">
+            <div class="quote-block reveal">
+                <div class="quote-mark">&ldquo;</div>
+                <p class="quote-text">We want to do something for these children from the stars.</p>
+                <p class="quote-text cn">我们想为这些"来自星星的孩子们"做些什么。</p>
+                <div class="quote-stars">&#10024;&#11088;&#10024;&#11088;&#10024;</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== History ===== -->
+    <section id="history">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label" style="background:linear-gradient(135deg, rgba(30,144,255,0.12), rgba(165,94,234,0.12)); color:var(--rainbow-blue);">Our Journey</span>
+                <h2 class="section-title">Two Years of Giving</h2>
+                <p class="section-title-cn cn">两年的坚持与付出</p>
+            </div>
+            <div class="stats-row reveal">
+                <div class="stat-card">
+                    <p class="stat-number">&#165;6,000<span style="font-size:0.5em;">+</span></p>
+                    <p class="stat-label">Donated to children with autism</p>
+                    <p class="stat-label-cn cn">为自闭症孩子们捐献</p>
+                </div>
+                <div class="stat-card clickable" onclick="openTimeline()" role="button" tabindex="0" aria-label="View our full timeline">
+                    <p class="stat-number">2<span style="font-size:0.5em;"> yrs</span></p>
+                    <p class="stat-label">Since Beyond was founded</p>
+                    <p class="stat-label-cn cn">Beyond 成立至今</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">&#10084;</p>
+                    <p class="stat-label">Every penny, handmade by us</p>
+                    <p class="stat-label-cn cn">每一分钱，亲手创造</p>
+                </div>
+            </div>
+            <div class="history-text reveal">
+                <p>Every single yuan we've donated was earned by our own hands. Each year at our school's Founders Day and the Elementary School Spring Fair, we knit scarves and craft handmade goods — selling them one by one, piece by piece.</p>
+                <p class="cn-text cn">我们捐出的每一分钱，都是自己亲手赚来的。每年在学校 Founder's Day 和小学 Spring Fair 上，我们织围巾、做手工，一件一件地卖出去。</p>
+                <p>It's slow. It's patient. It's love woven into every stitch.</p>
+                <p class="cn-text cn">虽然缓慢，虽然需要耐心——但每一针里都织进了爱。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Activities ===== -->
+    <section id="activities">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom: 20px;">
+                <span class="section-label" style="background:linear-gradient(135deg, rgba(46,213,115,0.12), rgba(30,144,255,0.12)); color:var(--rainbow-green);">Our Activities</span>
+                <h2 class="section-title">Dialogue Club &#8226; 对白社</h2>
+                <p class="section-title-cn cn">每两周一次的温暖相聚</p>
+            </div>
+            <div class="activity-intro reveal">
+                <p>Every other Sunday, we join the Dialogue Club (对白社) — a creative drama workshop where we spend time with children with autism through storytelling and performance.</p>
+                <p class="cn-text cn">每隔一周的星期日，我们参加"对白社"活动——这是一个通过故事和表演与自闭症孩子们共度时光的创意戏剧工作坊。</p>
+            </div>
+            <div class="activity-steps reveal">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>A Theme Begins</h4>
+                    <p class="cn">一个主题的开始</p>
+                    <p>Each session starts with a new theme — a story, an emotion, or an adventure waiting to unfold.</p>
+                    <p class="cn-text cn">每次活动都有一个新主题——一个故事、一种情感，或一段等待展开的冒险。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Small Groups Form</h4>
+                    <p class="cn">分组合作</p>
+                    <p>Everyone splits into small groups, each with one or two children with autism, guided by volunteers.</p>
+                    <p class="cn-text cn">大家分成几个小组，每组有一到两位自闭症小朋友，由志愿者陪伴引导。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Rehearse &amp; Create</h4>
+                    <p class="cn">排练与创作</p>
+                    <p>Over one to two hours, each group writes and rehearses a short script together — turning ideas into a performance.</p>
+                    <p class="cn-text cn">花一到两个小时，每组一起编写并排练一个短剧本——把创意变成一场表演。</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Shine &amp; Cheer</h4>
+                    <p class="cn">闪耀与欢呼</p>
+                    <p>Every group takes the stage to perform. We cheer, we clap, we celebrate each other — because every voice deserves to be heard.</p>
+                    <p class="cn-text cn">每个组轮流上台展示。我们为彼此欢呼、鼓掌、祝贺——因为每一个声音都值得被听见。</p>
+                </div>
+            </div>
+
+            <div class="dialogue-media-bar reveal">
+                <button class="dialogue-media-btn" onclick="openDialogueModal('video')" type="button">
+                    <span class="dialogue-media-icon">&#127909;</span>
+                    <span class="dialogue-media-label">Videos</span>
+                    <span class="dialogue-media-cn cn">视频</span>
+                </button>
+                <button class="dialogue-media-btn" onclick="openDialogueModal('photo')" type="button">
+                    <span class="dialogue-media-icon">&#128247;</span>
+                    <span class="dialogue-media-label">Photos</span>
+                    <span class="dialogue-media-cn cn">照片</span>
+                </button>
+                <button class="dialogue-media-btn" onclick="openDialogueModal('clue')" type="button">
+                    <span class="dialogue-media-icon">&#128161;</span>
+                    <span class="dialogue-media-label">Clue Words</span>
+                    <span class="dialogue-media-cn cn">线索词</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Join ===== -->
+    <section id="join">
+        <div class="container">
+            <div class="join-content reveal">
+                <div class="huddle-badge">
+                    <span>&#129529;</span>
+                    <span>HUDDLE TIME</span>
+                </div>
+                <h2>Join Beyond</h2>
+                <p class="join-subtitle">Become part of something bigger than yourself.</p>
+                <p class="cn">成为比自己更伟大的事物的一部分</p>
+                <p class="join-text">When you join Beyond, you'll spend our noon recess club time knitting scarves, making crafts, and learning about autism together. The atmosphere is relaxed, warm, and full of laughter — we call each gathering a Huddle, and the time we share, Huddle Time.</p>
+                <p class="join-text-cn cn">加入 Beyond 后，我们会在中午 recess 社团时间一起织围巾、做手工，同时了解自闭症。整个社团氛围轻松温暖、充满笑声——我们把每次聚在一起玩或做事的时光称为 Huddle / Huddle Time。</p>
+                <p class="join-text">All handmade crafts are sold at special festivals, charity events, and school sales — and every yuan raised goes directly to supporting children with autism.</p>
+                <p class="join-text-cn cn">所有手工艺品会在特殊节日、公益活动及义卖时售出，所得款项全部用于支持自闭症小朋友。</p>
+                <div style="margin-top: 40px;">
+                    <a href="https://forms.cloud.microsoft/r/b5sqAa2mnf" target="_blank" rel="noopener" class="join-cta">Sign Up Now &#8594;</a>
+                    <p class="join-cta-note">This is our registration link — we'd love to have you join us!</p>
+                    <p class="join-cta-note cn">这是我们的报名链接——期待你的加入！</p>
+                </div>
+                <button class="tradition-btn" onclick="openTraditionModal()" type="button">
+                    <span class="tradition-btn-icon">&#128396;&#65039;</span>
+                    <span class="tradition-btn-text">Our Tradition</span>
+                    <span class="tradition-btn-cn cn">我们的传统</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Dialogue Club: Videos Modal ===== -->
+    <div class="modal-backdrop dialogue-modal" id="dialogueVideoModal" onclick="closeDialogueModalOnBackdrop(event, 'video')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #FFF0F3 0%, #FFFFFF 100%); border-bottom: 3px solid var(--rainbow-red);">
+                <button class="modal-close" onclick="closeDialogueModal('video')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: var(--rainbow-red);">Dialogue Club Videos</p>
+                <p class="modal-title-cn cn" style="color: #E8336A;">对白社 · 活动视频</p>
+            </div>
+            <div class="modal-body">
+                <p class="photo-gallery-hint">Click play to watch moments from our sessions · 点击播放查看活动瞬间</p>
+                <div class="dialogue-video-grid">
+                    <div class="dialogue-video-item">
+                        <video controls preload="metadata" poster="images/dialogue-club-photo-1.jpg">
+                            <source src="images/dialogue-club-video-1-compact.m4v" type="video/mp4">
+                        </video>
+                        <p>Session moment 1 · 活动瞬间 1</p>
+                    </div>
+                    <div class="dialogue-video-item">
+                        <video controls preload="metadata" poster="images/dialogue-club-photo-2.jpg">
+                            <source src="images/dialogue-club-video-2-compact.m4v" type="video/mp4">
+                        </video>
+                        <p>Session moment 2 · 活动瞬间 2</p>
+                    </div>
+                    <div class="dialogue-video-item">
+                        <video controls preload="metadata" poster="images/dialogue-club-photo-3.jpg">
+                            <source src="images/dialogue-club-video-3-compact.m4v" type="video/mp4">
+                        </video>
+                        <p>Session moment 3 · 活动瞬间 3</p>
+                    </div>
+                    <div class="dialogue-video-item">
+                        <video controls preload="metadata" poster="images/dialogue-club-photo-4.jpg">
+                            <source src="images/dialogue-club-video-4-compact.m4v" type="video/mp4">
+                        </video>
+                        <p>Session moment 4 · 活动瞬间 4</p>
+                    </div>
+                    <div class="dialogue-video-item">
+                        <video controls preload="metadata" poster="images/dialogue-club-photo-5.jpg">
+                            <source src="images/dialogue-club-video-5-compact.m4v" type="video/mp4">
+                        </video>
+                        <p>Session moment 5 · 活动瞬间 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Dialogue Club: Photos Modal ===== -->
+    <div class="modal-backdrop dialogue-modal photo-gallery-modal" id="dialoguePhotoModal" onclick="closeDialogueModalOnBackdrop(event, 'photo')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #F0F9FF 0%, #FFFFFF 100%); border-bottom: 3px solid var(--rainbow-blue);">
+                <button class="modal-close" onclick="closeDialogueModal('photo')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: var(--rainbow-blue);">Dialogue Club Photos</p>
+                <p class="modal-title-cn cn" style="color: #1E90FF;">对白社 · 活动照片</p>
+            </div>
+            <div class="modal-body">
+                <p class="photo-gallery-hint">Click any photo to view it full size · 点击照片查看大图</p>
+                <div class="photo-gallery-grid">
+                    <a href="images/dialogue-club-photo-1.jpg" target="_blank" rel="noopener"><img src="images/dialogue-club-photo-1.jpg" alt="Dialogue Club photo 1"></a>
+                    <a href="images/dialogue-club-photo-2.jpg" target="_blank" rel="noopener"><img src="images/dialogue-club-photo-2.jpg" alt="Dialogue Club photo 2"></a>
+                    <a href="images/dialogue-club-photo-3.jpg" target="_blank" rel="noopener"><img src="images/dialogue-club-photo-3.jpg" alt="Dialogue Club photo 3"></a>
+                    <a href="images/dialogue-club-photo-4.jpg" target="_blank" rel="noopener"><img src="images/dialogue-club-photo-4.jpg" alt="Dialogue Club photo 4"></a>
+                    <a href="images/dialogue-club-photo-5.jpg" target="_blank" rel="noopener"><img src="images/dialogue-club-photo-5.jpg" alt="Dialogue Club photo 5"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Dialogue Club: Clue Words Modal ===== -->
+    <div class="modal-backdrop dialogue-modal" id="dialogueClueModal" onclick="closeDialogueModalOnBackdrop(event, 'clue')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #FFFBEB 0%, #FFFFFF 100%); border-bottom: 3px solid var(--rainbow-yellow);">
+                <button class="modal-close" onclick="closeDialogueModal('clue')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: #D4A017;">Clue Words</p>
+                <p class="modal-title-cn cn" style="color: var(--rainbow-yellow);">对白社 · 每次线索词</p>
+            </div>
+            <div class="modal-body">
+                <p class="photo-gallery-hint">Each session is built around one word · 每次活动都围绕一个线索词编排剧本</p>
+                <div class="dialogue-clue-grid">
+                    <img src="images/dialogue-clue-1.png" alt="Clue word 1">
+                    <img src="images/dialogue-clue-2.png" alt="Clue word 2">
+                    <img src="images/dialogue-clue-3.png" alt="Clue word 3">
+                    <img src="images/dialogue-clue-4.png" alt="Clue word 4">
+                    <img src="images/dialogue-clue-5.png" alt="Clue word 5">
+                    <img src="images/dialogue-clue-6.png" alt="Clue word 6">
+                    <img src="images/dialogue-clue-7.png" alt="Clue word 7">
+                    <img src="images/dialogue-clue-8.png" alt="Clue word 8">
+                    <img src="images/dialogue-clue-9.png" alt="Clue word 9">
+                </div>
+                <div class="dialogue-coming-soon">
+                    More clue words coming soon...
+                    <span class="cn">更多精彩线索词，敬请期待</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <p class="footer-logo">Beyond</p>
+        <p class="footer-tagline">Beyond the Stars &middot; 来自星星的孩子们</p>
+        <div class="footer-stars">&#10024;&#11088;&#10024;&#11088;&#10024;</div>
+        <p class="footer-copy">&copy; 2026 Beyond Team. Made with love, one stitch at a time.</p>
+    </footer>
+
+    <!-- ===== Anna Modal ===== -->
+    <div class="modal-backdrop member-modal" id="annaModal" onclick="closeAnnaModalOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="annaModalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeAnnaModal()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="annaModalTitle">Anna Dai</h3>
+                <p class="modal-title-cn cn">戴琬清 · 联合创始人</p>
+            </div>
+            <div class="modal-body">
+                <div class="member-hero">
+                    <img src="images/anna-photo.jpg" alt="Anna 戴琬清" class="member-avatar-large">
+                    <div class="member-intro">
+                        <h4>Anna Dai</h4>
+                        <p class="member-name-cn cn">戴琬清</p>
+                        <span class="member-role">Founder / 联合创始人</span>
+                        <p>Founding member of Beyond, leading all visual design, posters, and promotional materials for the team.</p>
+                    </div>
+                </div>
+
+                <div class="member-bio">
+                    <p>我是31届的 Anna 戴琬清，Beyond 的创始人之一。我热爱各项体育运动 🏐⚾️ 和艺术设计以及骑行 🚴，我最爱的科目是 Arttt 🎨🔥🫶。我在团队中主要负责一切作品以及海报和宣传方式的设计 👩‍🎨。有问题记得邮件联系我 😁：</p>
+                    <a href="mailto:s19039@stu.ykpaoschool.cn" class="member-email">📧 s19039@stu.ykpaoschool.cn</a>
+                </div>
+
+                <h4 class="member-gallery-title">Moments with Anna <span class="cn" style="font-weight:400; color:var(--text-gray);">· Anna 的瞬间</span></h4>
+                <div class="member-gallery gallery-single">
+                    <div class="gallery-item">
+                        <img src="images/anna-cycling-martina.jpg" alt="Road cycling with Anna">
+                        <div class="gallery-caption">Road cycling with Anna!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/anna-founders-day.jpg" alt="Prepare for Founders Day stall with Anna">
+                        <div class="gallery-caption">Prepare for Founders Day stall with Anna!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/anna-volleyball.jpg" alt="Meet the CS team">
+                        <div class="gallery-caption">Meet the CS team!!!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Momo Modal ===== -->
+    <div class="modal-backdrop member-modal" id="momoModal" onclick="closeMomoModalOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="momoModalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeMomoModal()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="momoModalTitle">Momo Wang</h3>
+                <p class="modal-title-cn cn">王雨墨 · 联合创始人</p>
+            </div>
+            <div class="modal-body">
+                <div class="member-hero">
+                    <img src="images/momo-photo.jpg" alt="Momo 王雨墨" class="member-avatar-large">
+                    <div class="member-intro">
+                        <h4>Momo Wang</h4>
+                        <p class="member-name-cn cn">王雨墨</p>
+                        <span class="member-role">Founder / 联合创始人</span>
+                        <p>Founding member of Beyond, leading internal communications and connecting everyone inside the team.</p>
+                    </div>
+                </div>
+
+                <div class="member-bio">
+                    <p>大家好 👋 我是31届的王雨墨 Momo Wang，Beyond 的创始人之一，目前在组织内负责内联（内部联系）相关事项，大家有任何组织内部的疑问可以来咨询我哦！我的兴趣爱好有水球/射击/撸猫等，最喜欢的科目是数学/科学，如果你有可爱小猫照片请务必分享给我！！欢迎大家私信我哦 😋</p>
+                    <a href="mailto:s24314@stu.ykpaoschool.cn" class="member-email">📧 s24314@stu.ykpaoschool.cn</a>
+                </div>
+
+                <h4 class="member-gallery-title">Momo's World <span class="cn" style="font-weight:400; color:var(--text-gray);">· Momo 的世界</span></h4>
+                <div class="member-gallery gallery-single">
+                    <div class="gallery-item">
+                        <img src="images/momo-cat.jpg" alt="Momo petting her cat">
+                        <div class="gallery-caption">Cat lover moment!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/momo-shooting.jpg" alt="Momo at shooting practice">
+                        <div class="gallery-caption">Shooting moment!!!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Eliza Modal ===== -->
+    <div class="modal-backdrop member-modal" id="elizaModal" onclick="closeElizaModalOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="elizaModalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeElizaModal()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="elizaModalTitle">Eliza Song</h3>
+                <p class="modal-title-cn cn">宋咿含 · 联合创始人</p>
+            </div>
+            <div class="modal-body">
+                <div class="member-hero">
+                    <img src="images/eliza-photo.jpg" alt="Eliza 宋咿含" class="member-avatar-large">
+                    <div class="member-intro">
+                        <h4>Eliza Song</h4>
+                        <p class="member-name-cn cn">宋咿含</p>
+                        <span class="member-role">Founder / 联合创始人</span>
+                        <p>Founding member of Beyond, leading external outreach and communications with outside organizations.</p>
+                    </div>
+                </div>
+
+                <div class="member-bio">
+                    <p>我是31届的宋咿含 Eliza，是 Beyond 的创始人之一，是对白社的长期志愿者，从第34话就加入了对白社，目前负责外联和沟通。我热爱运动，包括冰球、旱地冰球 & 足球，还有阅读 & 写 lit analysis stuff :) 欢迎加入 Beyond 👍（有好看的书记得退给我 😛）如果有任何关于和校外组织的联系和活动可以写邮件我来咨询哦！</p>
+                    <a href="mailto:s19018@stu.ykpaoschool.cn" class="member-email">📧 s19018@stu.ykpaoschool.cn</a>
+                </div>
+
+                <h4 class="member-gallery-title">Eliza's Moments <span class="cn" style="font-weight:400; color:var(--text-gray);">· Eliza 的瞬间</span></h4>
+                <div class="member-gallery gallery-single">
+                    <div class="gallery-item">
+                        <img src="images/eliza-childhood.jpg" alt="Little Eliza">
+                        <div class="gallery-caption">Little Eliza!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/eliza-book.jpg" alt="Eliza with her favorite book">
+                        <div class="gallery-caption">Book lover Eliza!!!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Amily Modal ===== -->
+    <div class="modal-backdrop member-modal" id="amilyModal" onclick="closeAmilyModalOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="amilyModalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeAmilyModal()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="amilyModalTitle">Amily Ju</h3>
+                <p class="modal-title-cn cn">鞠沁怡 · 联合创始人</p>
+            </div>
+            <div class="modal-body">
+                <div class="member-hero">
+                    <img src="images/amily-photo.jpg" alt="Amily 鞠沁怡" class="member-avatar-large">
+                    <div class="member-intro">
+                        <h4>Amily Ju</h4>
+                        <p class="member-name-cn cn">鞠沁怡</p>
+                        <span class="member-role">Founder / 联合创始人</span>
+                        <p>Founding member of Beyond, leading technology, publicity, and media for the team.</p>
+                    </div>
+                </div>
+
+                <div class="member-bio">
+                    <p>我是 31 届的鞠沁怡 Amily，Beyond 的创始人之一，主要负责技术方面的工作，主要是宣传和媒体。爱好包括音乐剧/长笛/写作，喜欢的科目是历史。欢迎加入 Beyond 👍❤️！</p>
+                    <a href="mailto:s22221@stu.ykpaoschool.cn" class="member-email">📧 s22221@stu.ykpaoschool.cn</a>
+                </div>
+
+                <h4 class="member-gallery-title">Amily &amp; Nature <span class="cn" style="font-weight:400; color:var(--text-gray);">· Amily 与大自然</span></h4>
+                <div class="member-gallery gallery-single">
+                    <div class="gallery-item">
+                        <img src="images/amily-flowers.jpg" alt="Amily in front of a wall of flowers">
+                        <div class="gallery-caption">Smile in the flower wall!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/amily-tree.jpg" alt="Amily standing by an old tree">
+                        <div class="gallery-caption">Hugging the ancient tree!!!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Martina Modal ===== -->
+    <div class="modal-backdrop member-modal" id="martinaModal" onclick="closeMartinaModalOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="martinaModalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeMartinaModal()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="martinaModalTitle">Martina Y</h3>
+                <p class="modal-title-cn cn">杨丹译 · 联合创始人</p>
+            </div>
+            <div class="modal-body">
+                <div class="member-hero">
+                    <img src="images/martina-photo.jpg" alt="Martina 杨丹译" class="member-avatar-large">
+                    <div class="member-intro">
+                        <h4>Martina Y</h4>
+                        <p class="member-name-cn cn">杨丹译</p>
+                        <span class="member-role">Founder / 联合创始人</span>
+                        <p>Founding member of Beyond, leading the team's handmade crafts and creative projects.</p>
+                    </div>
+                </div>
+
+                <div class="member-bio">
+                    <p>大家好，我是 31 届的杨丹译 Martina Y，Beyond 的创始人之一，目前主要负责团队手工方面的工作。我的爱好包括小提琴、钢琴、lacrosse、高山滑雪、游泳、画画、写作，喜欢语文、数学、科学……和小猫。如果谁家里有小奶猫出生，可以让我了解了解（抱回家！！！）吗😋😋欢迎联系我！！期待大家加入 Beyond：）</p>
+                    <a href="mailto:s24313@stu.ykpaoschool.cn" class="member-email">📧 s24313@stu.ykpaoschool.cn</a>
+                </div>
+
+                <h4 class="member-gallery-title">Martina in Action <span class="cn" style="font-weight:400; color:var(--text-gray);">· Martina 的运动时刻</span></h4>
+                <div class="member-gallery gallery-single">
+                    <div class="gallery-item">
+                        <img src="images/martina-lacrosse.jpg" alt="Martina playing lacrosse">
+                        <div class="gallery-caption">Lacrosse night!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/martina-skiing-xinjiang.jpg" alt="Martina skiing in Xinjiang">
+                        <div class="gallery-caption">Skiing in Xinjiang!!!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/martina-skiing-race.jpg" alt="Martina in a ski race">
+                        <div class="gallery-caption">Race day on the slopes!!!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Module Modal 1: Metaphor's Crack ===== -->
+    <div class="modal-backdrop member-modal" id="metaphorCrackModal" onclick="closeModuleModalOnBackdrop(event, 'metaphorCrack')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #FFF0F5 0%, #FFFFFF 100%); border-bottom: 3px solid #E8336A;">
+                <button class="modal-close" onclick="closeModuleModal('metaphorCrack')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: #C01A52;">Metaphor's Crack</p>
+                <p class="modal-title-cn cn" style="color: #E8336A;">隐喻的裂隙</p>
+            </div>
+            <div class="modal-body module-detail-body">
+                <div class="module-detail-intro">
+                    <p>We talk in hints, jokes, and polite lies. But if you take every word literally, these everyday phrases become walls instead of bridges.</p>
+                    <p class="intro-cn cn">我们说话总是带暗示、开玩笑、说客套话。但如果有人把每句话都按字面意思理解，这些日常用语就变成了墙，而不是桥。</p>
+                </div>
+
+                <div class="module-detail-hero">
+                    <img src="images/module-metaphor-crack.jpg" alt="Abstract shattered glass art symbolizing broken dialogue">
+                    <span class="hero-source">Source: artwithmisslinda.com · Shattered Glass Art</span>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🔍 When "I'm fine" doesn't mean fine</h4>
+                    <p class="section-sub-cn cn">当"我没事"不是真的没事</p>
+                    <p>When someone says "I'm fine," they usually mean the opposite. When they say "Could you pass the salt?" they're not asking about your ability — they just want the salt. Most people pick up these hidden meanings without thinking. But for someone with autism, words often mean exactly what they say. This leads to misunderstandings that seem small to us but feel huge to them.</p>
+                    <p class="cn-text cn">当有人说"我没事"的时候，往往意思正好相反。当有人说"你能把盐递给我吗？"，不是在问你有没有能力，只是想让你递个盐。大多数人不用想就能听出这些隐藏的意思。但对自闭症人士来说，话就是字面上的意思。这会导致一些我们觉得无所谓、但对他们来说很大的误会。</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>💬 Polite words that confuse</h4>
+                    <p class="section-sub-cn cn">让人困惑的客套话</p>
+                    <p>"Let's grab coffee sometime!" "We should hang out!" Most of the time, these are just nice things people say — not real invitations. But if you take them literally, you might wait for a call that never comes. Over time, this makes social life confusing and exhausting for people with autism. It's not that they don't want to connect — it's that the rules keep changing.</p>
+                    <p class="cn-text cn">"有空一起喝咖啡！""改天约！"大多数时候，这些只是客套话，不是真的约你。但如果按字面理解，你可能会一直等一个永远不会来的电话。时间久了，社交对自闭症人士来说变得又累又困惑。不是他们不想交朋友，而是规则一直在变。</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🎭 Idioms that make no sense</h4>
+                    <p class="section-sub-cn cn">毫无道理的成语和俗语</p>
+                    <p>"Break a leg" means good luck. "Spill the beans" means tell a secret. "Hit the books" means study hard. If you read these word by word, they make zero sense. People with autism aren't less smart — they just understand language in a more direct way. The problem isn't them. It's that our language is full of hidden codes they were never given the key to.</p>
+                    <p class="cn-text cn">"Break a leg"是祝你好运。"Spill the beans"是泄露秘密。"Hit the books"是用功读书。如果逐字翻译，这些短语根本说不通。自闭症人士不是不聪明——他们只是用更直接的方式理解语言。问题不在他们，而在于我们的语言里藏着太多他们没有钥匙的密码。</p>
+                </div>
+
+                <div class="module-quote-box">
+                    <p class="quote-en">"I think in pictures. Words are like a second language to me."</p>
+                    <p class="quote-cn cn">"我用画面思考。文字对我来说就像第二语言。"</p>
+                    <p class="quote-attr">— Temple Grandin, autism advocate &amp; professor</p>
+                    <div class="quote-relate">
+                        <p>For someone who thinks in pictures, phrases full of hidden meanings are like a foreign language nobody taught them. The "crack" in communication isn't because they're not listening — it's because we're speaking in code.</p>
+                        <p class="cn-text cn">对一个用画面思考的人来说，充满暗示的话语就像一门没人教过的外语。沟通中的"裂隙"不是因为他们没在听，而是因为我们在用密码说话。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Module Modal 2: Object-Mediator ===== -->
+    <div class="modal-backdrop member-modal" id="objectMediatorModal" onclick="closeModuleModalOnBackdrop(event, 'objectMediator')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #FFF5EB 0%, #FFFFFF 100%); border-bottom: 3px solid #FF8C42;">
+                <button class="modal-close" onclick="closeModuleModal('objectMediator')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: #D96B1E;">Object-Mediator</p>
+                <p class="modal-title-cn cn" style="color: #FF8C42;">物件的代理者</p>
+            </div>
+            <div class="modal-body module-detail-body">
+                <div class="module-detail-intro">
+                    <p>Sometimes you can't say what you feel with words. An object — a toy, a pebble, a string of beads — can say it for you.</p>
+                    <p class="intro-cn cn">有时候用嘴说不出来的感受，一个小东西——一个玩具、一块石头、一串珠子——可以替你说出来。</p>
+                </div>
+
+                <div class="module-detail-hero">
+                    <img src="images/module-object-mediator.jpg" alt="Abstract minimalist still life with everyday objects">
+                    <span class="hero-source">Source: freepik.com · Stacked Aesthetic Objects Still Life</span>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🧸 More than "just a toy"</h4>
+                    <p class="section-sub-cn cn">不只是"一个玩具"</p>
+                    <p>For some autistic kids, a favorite object isn't just a thing they carry around. It helps them feel calm when everything else feels too loud, too bright, or too fast. It's like a security blanket — but one that speaks a language only they fully understand.</p>
+                    <p class="cn-text cn">对一些自闭症孩子来说，一个心爱的小物件不只是随身带着的东西。当周围的一切都太吵、太亮、太快的时候，它能帮他们安静下来。就像一条安心毯——但只有他们自己听得懂它在说什么。</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🔄 Why they line things up</h4>
+                    <p class="section-sub-cn cn">为什么他们喜欢把东西排成一排</p>
+                    <p>You might have seen an autistic child line up toys in a perfect row, spin a wheel over and over, or arrange objects by color. Some people think this is "weird." But think about it — when you're stressed, don't you also do something repetitive? Tap your pen, bounce your leg, crack your knuckles? For autistic kids, repetition isn't random. It's how they make a chaotic world feel orderly.</p>
+                    <p class="cn-text cn">你可能见过自闭症孩子把玩具排成一排，反反复复转一个轮子，或者按颜色摆东西。有些人觉得这是"奇怪的行为"。但想一想——你紧张的时候不也会做些重复的动作吗？转笔、抖腿、掰手指？对自闭症孩子来说，重复不是没意义的。这是他们在混乱的世界里给自己建立秩序的方式。</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🌉 Objects as messengers</h4>
+                    <p class="section-sub-cn cn">物件是信使</p>
+                    <p>When a child hands you a toy, they might not be asking you to play. They might be saying: "This is how I feel." "This is what I need right now." The object becomes a messenger — carrying feelings that words can't. If we only see "a kid playing with toys," we miss the whole conversation.</p>
+                    <p class="cn-text cn">当一个孩子递给你一个玩具，他可能不是想让你陪他玩。他可能在说："这是我的感受。""这是我需要的。"物件成了信使，传递着语言说不清楚的东西。如果我们只看到"一个在玩玩具的孩子"，我们就错过了整段对话。</p>
+                </div>
+
+                <div class="module-quote-box" style="border-left-color: #FF8C42;">
+                    <p class="quote-en">"Different, not less."</p>
+                    <p class="quote-cn cn">"是不同，不是更差。"</p>
+                    <p class="quote-attr">— Temple Grandin</p>
+                    <div class="quote-relate">
+                        <p>When an autistic child lines up toys or holds onto a pebble, they're not doing something "less." They're doing something different — communicating in a way we're only starting to understand. The object isn't a wall between us. It's the bridge.</p>
+                        <p class="cn-text cn">当自闭症孩子排列玩具或紧握一颗石子时，他们不是在"退步"。他们是在用不同的方式沟通——一种我们才刚开始理解的方式。物件不是挡在我们中间的墙，而是连接我们的桥。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Module Modal 3: Weaving Mirror ===== -->
+    <div class="modal-backdrop member-modal" id="weavingMirrorModal" onclick="closeModuleModalOnBackdrop(event, 'weavingMirror')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #E8FBF5 0%, #FFFFFF 100%); border-bottom: 3px solid #3DD9B4;">
+                <button class="modal-close" onclick="closeModuleModal('weavingMirror')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: #1A9B7A;">Weaving Mirror</p>
+                <p class="modal-title-cn cn" style="color: #3DD9B4;">织作的镜像</p>
+            </div>
+            <div class="modal-body module-detail-body">
+                <div class="module-detail-intro">
+                    <p>We knit scarves to raise money for autistic kids. But sitting there, looping yarn row after row, we started to see ourselves in them.</p>
+                    <p class="intro-cn cn">我们织围巾义卖，是为了帮助自闭症孩子。但坐在那里，一针一针绕着毛线，我们开始在他们身上看到了自己。</p>
+                </div>
+
+                <div class="module-detail-hero">
+                    <img src="images/module-weaving-mirror.jpg" alt="Handmade knitted scarf with intricate pattern">
+                    <span class="hero-source">Source: sarahmaker.com · Side Line Scarf Knitting</span>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🧶 Our scarf project</h4>
+                    <p class="section-sub-cn cn">我们的围巾项目</p>
+                    <p>Every scarf Beyond sells starts with a single loop of yarn. We sit together during lunch break, needles clicking, yarn going round and round. Some of us count every stitch. Others just let their hands find the rhythm. It looks simple — but there's something calming about doing the same thing over and over.</p>
+                    <p class="cn-text cn">Beyond 卖出的每一条围巾都从一圈毛线开始。午休的时候我们坐在一起，棒针交错，毛线一圈又一圈。有人一针一针地数，有人让手自己找到节奏。看起来很简单——但一遍遍做同样的事，有一种让人安静下来的力量。</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🔄 We're not so different</h4>
+                    <p class="section-sub-cn cn">我们其实没那么不同</p>
+                    <p>Knitting is all about repetition: the same stitch, the same motion, over and over. Sound familiar? This is exactly what many autistic kids do — line things up, repeat actions, find comfort in patterns. We used to see that as "their behavior." Now, sitting here knitting, we realized: we do the same thing. We just call it "hobby" instead of "symptom."</p>
+                    <p class="cn-text cn">编织就是重复：同样的针法、同样的动作，一遍又一遍。听起来熟悉吗？这正是很多自闭症孩子在做的事——排列东西、重复动作、在规律中找到安心。我们以前觉得那是"他们的行为"。现在坐在那里织围巾，我们发现：我们也在做一样的事。只是我们管它叫"爱好"，不叫"症状"。</p>
+                </div>
+
+                <div class="module-thought-box">
+                    <p>"In every stitch, I find something I didn't expect — not just a scarf, but a quiet conversation between my hands and my mind."</p>
+                    <p class="cn-text cn">"每一针里，我都找到了意料之外的东西——不只是围巾，更是一场手和心之间的安静对话。"</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🪞 The mirror turned around</h4>
+                    <p class="section-sub-cn cn">镜子转向了自己</p>
+                    <p>We started this project to help autistic children. But somewhere between the first stitch and the last, the mirror turned around. The focus, the repetition, the need for order — these aren't "autistic traits." They're human traits. Weaving didn't just make scarves. It made us understand.</p>
+                    <p class="cn-text cn">我们开始这个项目是为了帮助自闭症孩子。但在第一针和最后一针之间的某个时刻，镜子转向了我们自己。那份专注、那份重复、对秩序的需要——这些不是"自闭症的特质"，而是人的特质。编织不只是做出了围巾，也让我们真正理解了。</p>
+                </div>
+
+                <div class="module-quote-box" style="border-left-color: #3DD9B4;">
+                    <p class="quote-en">"The world needs different kinds of minds to work together."</p>
+                    <p class="quote-cn cn">"这个世界需要不同的头脑一起合作。"</p>
+                    <p class="quote-attr">— Temple Grandin</p>
+                    <div class="quote-relate">
+                        <p>Every row of knitting taught us that the line between "us" and "them" is much thinner than we thought. The repetition we used to see as a "symptom" became something we experienced ourselves. Different minds aren't a problem to fix — they're the reason the world works.</p>
+                        <p class="cn-text cn">编织的每一行都在告诉我们：我们和"他们"之间的界限，比想象中薄得多。那些我们曾经当作"症状"的重复行为，变成了我们自己正在经历的事。不同的头脑不是需要解决的问题，而是这个世界运转的原因。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Module Modal 4: Parallel Hypothesis ===== -->
+    <div class="modal-backdrop member-modal" id="parallelHypothesisModal" onclick="closeModuleModalOnBackdrop(event, 'parallelHypothesis')">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header" style="background: linear-gradient(135deg, #EBF2FA 0%, #FFFFFF 100%); border-bottom: 3px solid #1A3A6C;">
+                <button class="modal-close" onclick="closeModuleModal('parallelHypothesis')" aria-label="Close">&times;</button>
+                <p class="modal-title" style="color: #1A3A6C;">Parallel Hypothesis</p>
+                <p class="modal-title-cn cn" style="color: #2E5BA8;">平行的可能性</p>
+            </div>
+            <div class="modal-body module-detail-body">
+                <div class="module-detail-intro">
+                    <p>"Normal" is just a set of rules that most people agreed on. But what if the rules were different? Who would be "normal" then?</p>
+                    <p class="intro-cn cn">"正常"只不过是大多数人商量好的一套规则。如果规则变了，谁才是"正常"的？</p>
+                </div>
+
+                <div class="module-detail-hero">
+                    <img src="images/module-parallel-hypothesis.jpg" alt="Abstract parallel universe starry paths artwork">
+                    <span class="hero-source">Source: Wixstatic.com · Parallel Universe Art</span>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🌌 What if the world were different?</h4>
+                    <p class="section-sub-cn cn">如果世界是另一个样子呢？</p>
+                    <p>Imagine a world where saying exactly what you think is considered polite. Where "I don't want to" is better than "I'd love to, but I'm busy." Where rocking back and forth is seen as dancing, not a symptom. Where lining up objects is an art form. In this world, who would need "social skills training" — autistic people, or everyone else?</p>
+                    <p class="cn-text cn">想象一个这样的世界：想到什么就说什么被认为是礼貌的。"我不想"比"我很想去但没空"更得体。来回摇晃身体被看作跳舞，而不是症状。把东西排成一行是一种艺术。在这个世界里，谁需要"社交技能训练"——是自闭症人士，还是其他人？</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>⚖️ Who made these rules?</h4>
+                    <p class="section-sub-cn cn">这些规则是谁定的？</p>
+                    <p>We say eye contact is "normal." Small talk is "necessary." Lining up toys is "weird." But who decided this? These aren't laws of nature — they're just things the majority got used to. If 90% of people were autistic, the rules would flip: eye contact might seem rude, and "How are you?" would be a strange question because nobody actually wants the real answer.</p>
+                    <p class="cn-text cn">我们说眼神交流是"正常的"。寒暄是"必要的"。排列玩具是"奇怪的"。但谁定的？这些不是自然法则——只是大多数人习惯了的东西。如果 90% 的人是自闭症，规则就会反过来：盯着人看可能被认为没礼貌，"你好吗？"会变成一个奇怪的问题——因为没人真的想知道答案。</p>
+                </div>
+
+                <div class="module-thought-box">
+                    <p>🤔 Think about it:</p>
+                    <p style="margin-top:10px; font-size:0.92rem; color:var(--text-gray);">If 90% of people were autistic, what would "social skills training" look like?<br>If loud sounds bothered everyone, would fireworks be banned?<br>If everyone loved talking about their favorite topic for hours, would the world have more ideas — or just louder conversations?</p>
+                    <p class="cn-text cn" style="margin-top:8px;">如果 90% 的人是自闭症，"社交训练"会教什么？如果所有人都怕吵，烟花会被禁吗？如果每个人都喜欢聊自己喜欢的话题聊上几小时，世界会有更多想法——还是只是更吵？</p>
+                </div>
+
+                <div class="module-detail-section">
+                    <h4>🔄 The point</h4>
+                    <p class="section-sub-cn cn">所以呢？</p>
+                    <p>This isn't just a daydream. It's a way to understand. When you imagine a world where the rules are flipped, you start to see that our rules are just one option — not the only option. We don't need to pretend autism doesn't exist. We just need to stop pretending our way is the only way.</p>
+                    <p class="cn-text cn">这不只是白日梦。这是一种理解的方式。当你想象一个规则翻转的世界，你就会发现：我们的规则只是一种选择，不是唯一的选择。我们不需要假装自闭症不存在，只需要停止假装我们的方式是唯一的方式。</p>
+                </div>
+
+                <div class="module-quote-box" style="border-left-color: #1A3A6C;">
+                    <p class="quote-en">"If you've met one person with autism, you've met one person with autism."</p>
+                    <p class="quote-cn cn">"如果你遇见过一个自闭症人士，那你只遇见过一个自闭症人士。"</p>
+                    <p class="quote-attr">— Dr. Stephen Shore, autism advocate &amp; professor</p>
+                    <div class="quote-relate">
+                        <p>No two autistic people are the same. So maybe there's no such thing as "normal" — just lots of different ways to be human. The question isn't "how do we fix the people who are different." It's "how do we build a world where everyone fits."</p>
+                        <p class="cn-text cn">没有两个自闭症人士是一样的。所以也许根本不存在"正常"——只有很多种做人的方式。问题不是"怎么修正那些不一样的人"，而是"怎么建一个让所有人都能待下去的世界"。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Timeline Modal ===== -->
+    <div class="modal-backdrop" id="timelineModal" onclick="closeTimelineOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeTimeline()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="modalTitle">Our Journey Through the Years</h3>
+                <p class="modal-title-cn cn">我们这两年的足迹</p>
+            </div>
+            <div class="modal-body">
+                <p class="timeline-hint">Click any amount to see what happened · 点击金额查看详情</p>
+                <div class="simple-timeline">
+                    <div class="simple-timeline-line"></div>
+
+                    <div class="simple-timeline-row left">
+                        <button class="money-chip" onclick="toggleTimelineDetail('event-fd24')" type="button" aria-expanded="false" aria-controls="event-fd24">
+                            <span class="money-chip-amount">&#165;2,000+</span>
+                            <span class="money-chip-date">Nov 10, 2024</span>
+                        </button>
+                        <div class="simple-timeline-dot" style="background:#FF4B6E;box-shadow:0 0 0 3px rgba(255,75,110,0.25);"></div>
+                        <div class="simple-timeline-detail" id="event-fd24">
+                            <h4>Founders Day · 创办人日义卖</h4>
+                            <p>Our very first charity sale. We sold handmade scarves and small crafts at the school's Founders Day.</p>
+                            <p class="cn">我们的第一次义卖。在学校的创办人日上，我们卖出了亲手织的围巾和小手工。</p>
+                            <span class="simple-timeline-tag">&#128722; Charity Sale</span>
+                        </div>
+                    </div>
+
+                    <div class="simple-timeline-row right">
+                        <div class="simple-timeline-detail" id="event-sf25">
+                            <h4>Spring Fair · 春日集市</h4>
+                            <p>First Elementary School Spring Fair booth. All proceeds donated to the Shanghai Charity Foundation for children with autism.</p>
+                            <p class="cn">第一次小学部 Spring Fair 摆摊。所有收入捐给上海市慈善基金会，用于自闭症儿童。</p>
+                            <span class="simple-timeline-tag">&#127800; Spring Fair</span>
+                        </div>
+                        <div class="simple-timeline-dot" style="background:#FF9F43;box-shadow:0 0 0 3px rgba(255,159,67,0.25);"></div>
+                        <button class="money-chip" onclick="toggleTimelineDetail('event-sf25')" type="button" aria-expanded="false" aria-controls="event-sf25">
+                            <span class="money-chip-amount">&#165;600+</span>
+                            <span class="money-chip-date">Apr 25, 2025</span>
+                        </button>
+                    </div>
+
+                    <div class="simple-timeline-row left">
+                        <button class="money-chip" onclick="toggleTimelineDetail('event-fd25')" type="button" aria-expanded="false" aria-controls="event-fd25">
+                            <span class="money-chip-amount">&#165;2,000+</span>
+                            <span class="money-chip-date">Nov 9, 2025</span>
+                        </button>
+                        <div class="simple-timeline-dot" style="background:#FECA57;box-shadow:0 0 0 3px rgba(254,202,87,0.25);"></div>
+                        <div class="simple-timeline-detail" id="event-fd25">
+                            <h4>Founders Day Round 2 · 创办人日义卖（第二年）</h4>
+                            <p>Back at Founders Day with more crafts, more friends, and the same mission.</p>
+                            <p class="cn">第二年再次参加创办人日义卖，带了更多手作，认识了更多朋友，初心不变。</p>
+                            <span class="simple-timeline-tag">&#128722; Charity Sale</span>
+                        </div>
+                    </div>
+
+                    <div class="simple-timeline-row right">
+                        <div class="simple-timeline-detail wide" id="event-sf26">
+                            <h4>Spring Fair 2026 · 春日集市（第二年）</h4>
+                            <p>Our biggest single event so far! We raised over ¥1,900 selling knitted goods and custom orders.</p>
+                            <p class="cn">这是我们目前为止规模最大的一次活动！通过售卖围巾和定制订单，我们筹集了超过 ¥1,900。</p>
+                            <div class="mic-story">
+                                <div class="mic-story-icon">&#127908;</div>
+                                <div class="mic-story-text">
+                                    <strong>Bought microphones · 买下话筒</strong>
+                                    <p>With this income, we bought performance microphones and stage supplies for the children and teachers of the Dialogue Club.</p>
+                                    <p class="cn">用这笔收入，我们为对白社的小朋友和老师们购买了表演用的话筒和舞台用品。</p>
+                                </div>
+                            </div>
+                            <button class="sf-folder" onclick="openPhotoGallery()" type="button">
+                                <span class="sf-folder-icon">&#128193;</span>
+                                <span class="sf-folder-text">
+                                    <strong>Spring Fair 2026 Photos &#183; 2026 春日集市合照</strong>
+                                    <span>9 photos with our customers &#183; 9 张和小客人们的合照，点开看看</span>
+                                </span>
+                                <span class="sf-folder-arrow">&#8594;</span>
+                            </button>
+                            <span class="simple-timeline-tag">&#127800; Spring Fair</span>
+                        </div>
+                        <div class="simple-timeline-dot" style="background:#2ED573;box-shadow:0 0 0 3px rgba(46,213,115,0.25);"></div>
+                        <button class="money-chip" onclick="toggleTimelineDetail('event-sf26')" type="button" aria-expanded="false" aria-controls="event-sf26">
+                            <span class="money-chip-amount">&#165;1,900+</span>
+                            <span class="money-chip-date">Apr 25, 2026</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-footer-stars">&#10024;&#11088;&#10024;&#11088;&#10024;</div>
+                    <p class="modal-footer-text">Stay tuned for what comes next.</p>
+                    <p class="modal-footer-cn cn">敬请期待未来的活动 ✦ The journey continues...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Spring Fair Photo Gallery Modal ===== -->
+    <div class="modal-backdrop" id="photoGalleryModal" onclick="closePhotoGalleryOnBackdrop(event)">
+        <div class="modal photo-gallery-modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closePhotoGallery()" aria-label="Close">&times;</button>
+                <h3 class="modal-title">Spring Fair 2026 &#183; Memories</h3>
+                <p class="modal-title-cn cn">2026 春日集市 &#183; 和小客人们的合照</p>
+            </div>
+            <div class="modal-body">
+                <p class="photo-gallery-hint">Tap a photo to see it full size &#183; 点击照片查看大图</p>
+                <div class="photo-gallery-grid">
+                    <a href="images/spring-fair-selfie-1.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-1.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-2.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-2.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-3.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-3.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-5.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-5.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-6.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-6.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-7.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-7.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-8.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-8.jpg" alt="Spring Fair selfie with customers"></a>
+                    <a href="images/spring-fair-selfie-dad.jpg" target="_blank" rel="noopener"><img src="images/spring-fair-selfie-dad.jpg" alt="Spring Fair selfie with dad"></a>
+                </div>
+                <div class="modal-footer">
+                    <div class="modal-footer-stars">&#10024;&#11088;&#10024;&#11088;&#10024;</div>
+                    <p class="modal-footer-text">Thank you to every customer who made it special!</p>
+                    <p class="modal-footer-cn cn">谢谢每一位小客人，让这一天变得特别！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Our Tradition Modal ===== -->
+    <div class="modal-backdrop" id="traditionModal" onclick="closeTraditionModalOnBackdrop(event)">
+        <div class="modal" role="dialog" aria-labelledby="traditionModalTitle" aria-modal="true">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeTraditionModal()" aria-label="Close">&times;</button>
+                <h3 class="modal-title" id="traditionModalTitle">Our Tradition</h3>
+                <p class="modal-title-cn cn">我们的传统</p>
+            </div>
+            <div class="modal-body">
+                <div class="tradition-intro">
+                    <p>At every fair, we don't only sell ready-made items — we also take custom orders on the spot. A customer picks their favorite color, shape, and product, then draws a little self-portrait and writes their name on our whiteboard. We make it, and they come back at the agreed time to pick it up.</p>
+                    <p class="cn-text cn">在每一次集市上，我们不仅卖现成的手作，还接受现场定制。客人选好自己喜欢的颜色、版型和制品，然后在我们的白板上画一幅小肖像、写下名字。我们做好后，他们按约定时间来取。</p>
+                </div>
+                <div class="tradition-board">
+                    <img src="images/customer-board.jpg" alt="Customer order board from Spring Fair 2026">
+                    <p class="tradition-board-caption">The whiteboard from Spring Fair 2026 · 2026 Spring Fair 的定制白板</p>
+                </div>
+                <div class="tradition-steps">
+                    <div class="tradition-step">
+                        <div class="tradition-step-num">1</div>
+                        <p>Pick color, style &amp; product</p>
+                        <p class="cn">选择颜色、版型和制品</p>
+                    </div>
+                    <div class="tradition-step">
+                        <div class="tradition-step-num">2</div>
+                        <p>Draw a tiny self-portrait</p>
+                        <p class="cn">画一幅小肖像</p>
+                    </div>
+                    <div class="tradition-step">
+                        <div class="tradition-step-num">3</div>
+                        <p>Write your name</p>
+                        <p class="cn">写下名字</p>
+                    </div>
+                    <div class="tradition-step">
+                        <div class="tradition-step-num">4</div>
+                        <p>Come back to collect</p>
+                        <p class="cn">按约定时间来取</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Mobile nav toggle
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Anna member modal
+        const annaModal = document.getElementById('annaModal');
+        const annaCard = document.getElementById('anna-card');
+        function openAnnaModal() {
+            annaModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAnnaModal() {
+            annaModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeAnnaModalOnBackdrop(e) {
+            if (e.target === annaModal) closeAnnaModal();
+        }
+        if (annaCard) {
+            annaCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openAnnaModal();
+                }
+            });
+        }
+
+        // Momo member modal
+        const momoModal = document.getElementById('momoModal');
+        const momoCard = document.getElementById('momo-card');
+        function openMomoModal() {
+            momoModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMomoModal() {
+            momoModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeMomoModalOnBackdrop(e) {
+            if (e.target === momoModal) closeMomoModal();
+        }
+        if (momoCard) {
+            momoCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openMomoModal();
+                }
+            });
+        }
+
+        // Eliza member modal
+        const elizaModal = document.getElementById('elizaModal');
+        const elizaCard = document.getElementById('eliza-card');
+        function openElizaModal() {
+            elizaModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeElizaModal() {
+            elizaModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeElizaModalOnBackdrop(e) {
+            if (e.target === elizaModal) closeElizaModal();
+        }
+        if (elizaCard) {
+            elizaCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openElizaModal();
+                }
+            });
+        }
+
+        // Amily member modal
+        const amilyModal = document.getElementById('amilyModal');
+        const amilyCard = document.getElementById('amily-card');
+        function openAmilyModal() {
+            amilyModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAmilyModal() {
+            amilyModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeAmilyModalOnBackdrop(e) {
+            if (e.target === amilyModal) closeAmilyModal();
+        }
+        if (amilyCard) {
+            amilyCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openAmilyModal();
+                }
+            });
+        }
+
+        // Martina member modal
+        const martinaModal = document.getElementById('martinaModal');
+        const martinaCard = document.getElementById('martina-card');
+        function openMartinaModal() {
+            martinaModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMartinaModal() {
+            martinaModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeMartinaModalOnBackdrop(e) {
+            if (e.target === martinaModal) closeMartinaModal();
+        }
+        if (martinaCard) {
+            martinaCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openMartinaModal();
+                }
+            });
+        }
+
+        // Timeline modal
+        const timelineModal = document.getElementById('timelineModal');
+        function openTimeline() {
+            timelineModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeTimeline() {
+            timelineModal.classList.remove('open');
+            // close any open details when modal closes
+            document.querySelectorAll('.simple-timeline-detail.open').forEach(d => d.classList.remove('open'));
+            document.querySelectorAll('.money-chip[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+            document.body.style.overflow = '';
+        }
+        function closeTimelineOnBackdrop(e) {
+            if (e.target === timelineModal) closeTimeline();
+        }
+        function toggleTimelineDetail(id) {
+            const detail = document.getElementById(id);
+            const chip = document.querySelector('button[aria-controls="' + id + '"]');
+            const isOpen = detail.classList.contains('open');
+            // close others
+            document.querySelectorAll('.simple-timeline-detail.open').forEach(d => d.classList.remove('open'));
+            document.querySelectorAll('.money-chip[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+            if (!isOpen) {
+                detail.classList.add('open');
+                if (chip) chip.setAttribute('aria-expanded', 'true');
+                // allow transition to start before scrolling
+                setTimeout(() => {
+                    detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+
+        // Spring Fair photo gallery modal
+        const photoGalleryModal = document.getElementById('photoGalleryModal');
+        function openPhotoGallery() {
+            photoGalleryModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePhotoGallery() {
+            photoGalleryModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closePhotoGalleryOnBackdrop(e) {
+            if (e.target === photoGalleryModal) closePhotoGallery();
+        }
+
+        // Dialogue Club media modals
+        const dialogueModals = {
+            video: document.getElementById('dialogueVideoModal'),
+            photo: document.getElementById('dialoguePhotoModal'),
+            clue: document.getElementById('dialogueClueModal')
+        };
+        function openDialogueModal(type) {
+            if (dialogueModals[type]) {
+                dialogueModals[type].classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        function closeDialogueModal(type) {
+            if (dialogueModals[type]) {
+                dialogueModals[type].classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeDialogueModalOnBackdrop(e, type) {
+            if (e.target === dialogueModals[type]) closeDialogueModal(type);
+        }
+
+        // Our Tradition modal
+        const traditionModal = document.getElementById('traditionModal');
+        function openTraditionModal() {
+            traditionModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeTraditionModal() {
+            traditionModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeTraditionModalOnBackdrop(e) {
+            if (e.target === traditionModal) closeTraditionModal();
+        }
+
+        // ===== Autism Module Modals =====
+        const moduleModalIds = {
+            metaphorCrack: 'metaphorCrackModal',
+            objectMediator: 'objectMediatorModal',
+            weavingMirror: 'weavingMirrorModal',
+            parallelHypothesis: 'parallelHypothesisModal'
+        };
+        const moduleModals = {};
+        Object.keys(moduleModalIds).forEach(function(key) {
+            moduleModals[key] = document.getElementById(moduleModalIds[key]);
+        });
+        function openModuleModal(key) {
+            if (moduleModals[key]) {
+                moduleModals[key].classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        function closeModuleModal(key) {
+            if (moduleModals[key]) {
+                moduleModals[key].classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeModuleModalOnBackdrop(e, key) {
+            if (e.target === moduleModals[key]) closeModuleModal(key);
+        }
+        // Keyboard accessible puzzle pieces
+        document.querySelectorAll('.puzzle-piece').forEach(function(card) {
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
+        // ESC key to close all modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (annaModal.classList.contains('open')) closeAnnaModal();
+                if (momoModal.classList.contains('open')) closeMomoModal();
+                if (elizaModal.classList.contains('open')) closeElizaModal();
+                if (amilyModal.classList.contains('open')) closeAmilyModal();
+                if (martinaModal.classList.contains('open')) closeMartinaModal();
+                if (timelineModal.classList.contains('open')) closeTimeline();
+                if (photoGalleryModal.classList.contains('open')) closePhotoGallery();
+                if (traditionModal.classList.contains('open')) closeTraditionModal();
+                Object.keys(dialogueModals).forEach(function(key) {
+                    if (dialogueModals[key] && dialogueModals[key].classList.contains('open')) closeDialogueModal(key);
+                });
+                Object.keys(moduleModals).forEach(function(key) {
+                    if (moduleModals[key].classList.contains('open')) closeModuleModal(key);
+                });
+            }
+        });
+        // Clickable card: keyboard accessible
+        const clickableCard = document.querySelector('.stat-card.clickable');
+        if (clickableCard) {
+            clickableCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openTimeline();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
